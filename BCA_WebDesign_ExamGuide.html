@@ -1,0 +1,2578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BCA Web Designing – Complete Exam Guide</title>
+<style>
+  :root {
+    --primary: #4f46e5;
+    --primary-light: #eef2ff;
+    --success: #059669;
+    --success-light: #ecfdf5;
+    --warning: #d97706;
+    --warning-light: #fffbeb;
+    --danger: #dc2626;
+    --danger-light: #fef2f2;
+    --info: #0284c7;
+    --info-light: #f0f9ff;
+    --gray: #6b7280;
+    --gray-light: #f9fafb;
+    --border: #e5e7eb;
+    --text: #111827;
+    --text-muted: #6b7280;
+    --bg: #ffffff;
+    --nav-bg: #1e1b4b;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text);
+    background: #f3f4f6;
+    display: flex;
+    min-height: 100vh;
+  }
+
+  /* ── NAV ── */
+  nav {
+    width: 240px;
+    min-width: 240px;
+    background: var(--nav-bg);
+    color: #c7d2fe;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    overflow-y: auto;
+    padding: 0 0 2rem;
+    font-size: 13px;
+  }
+  nav .nav-header {
+    background: #312e81;
+    padding: 1rem;
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.4;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  nav .nav-header span { display: block; font-size: 11px; font-weight: 400; color: #a5b4fc; margin-top: 2px; }
+  nav .nav-section { padding: 0.4rem 0; }
+  nav .nav-label {
+    padding: 0.5rem 1rem 0.25rem;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #818cf8;
+    font-weight: 600;
+  }
+  nav a {
+    display: block;
+    padding: 0.35rem 1rem 0.35rem 1.5rem;
+    color: #c7d2fe;
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    transition: all 0.15s;
+  }
+  nav a:hover, nav a.active {
+    background: rgba(99,102,241,0.15);
+    color: #fff;
+    border-left-color: #818cf8;
+  }
+
+  /* ── MAIN ── */
+  main {
+    flex: 1;
+    padding: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* ── SECTIONS ── */
+  section { display: none; }
+  section.active { display: block; }
+
+  /* ── HEADINGS ── */
+  h1 { font-size: 26px; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
+  h2 { font-size: 20px; font-weight: 600; color: #1e1b4b; margin: 2rem 0 0.75rem; border-bottom: 2px solid var(--primary-light); padding-bottom: 0.4rem; }
+  h3 { font-size: 16px; font-weight: 600; color: #312e81; margin: 1.5rem 0 0.5rem; }
+  h4 { font-size: 14px; font-weight: 600; color: var(--primary); margin: 1rem 0 0.4rem; }
+
+  p { margin-bottom: 0.75rem; }
+
+  /* ── CARDS ── */
+  .card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+
+  /* ── BADGES ── */
+  .badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .badge-red { background: #fee2e2; color: #991b1b; }
+  .badge-green { background: #dcfce7; color: #166534; }
+  .badge-yellow { background: #fef3c7; color: #92400e; }
+  .badge-blue { background: #dbeafe; color: #1e40af; }
+  .badge-purple { background: #ede9fe; color: #5b21b6; }
+
+  /* ── CALLOUTS ── */
+  .callout {
+    border-radius: 8px;
+    padding: 0.85rem 1rem;
+    margin: 1rem 0;
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-start;
+    font-size: 14px;
+  }
+  .callout-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .callout-imp { background: #fef3c7; border-left: 3px solid #f59e0b; color: #78350f; }
+  .callout-tip { background: #ecfdf5; border-left: 3px solid #10b981; color: #064e3b; }
+  .callout-warn { background: #fef2f2; border-left: 3px solid #ef4444; color: #7f1d1d; }
+  .callout-info { background: #eff6ff; border-left: 3px solid #3b82f6; color: #1e3a8a; }
+
+  /* ── CODE ── */
+  pre {
+    background: #1e1b4b;
+    color: #c7d2fe;
+    border-radius: 8px;
+    padding: 1rem;
+    overflow-x: auto;
+    font-size: 13px;
+    margin: 0.75rem 0;
+    font-family: 'Consolas', 'Courier New', monospace;
+    line-height: 1.6;
+  }
+  code {
+    background: #ede9fe;
+    color: #5b21b6;
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-family: 'Consolas', monospace;
+    font-size: 13px;
+  }
+  pre code { background: none; color: inherit; padding: 0; font-size: inherit; }
+
+  .kw { color: #818cf8; }
+  .fn { color: #34d399; }
+  .str { color: #fbbf24; }
+  .cm { color: #6b7280; font-style: italic; }
+  .tag { color: #f472b6; }
+  .attr { color: #a5f3fc; }
+  .val { color: #fbbf24; }
+
+  /* ── TABLES ── */
+  .tbl { width: 100%; border-collapse: collapse; margin: 0.75rem 0; font-size: 14px; }
+  .tbl th { background: var(--primary); color: #fff; padding: 8px 12px; text-align: left; font-weight: 600; }
+  .tbl td { padding: 7px 12px; border-bottom: 1px solid var(--border); }
+  .tbl tr:hover td { background: var(--primary-light); }
+  .tbl tr:nth-child(even) td { background: #fafafa; }
+
+  /* ── LISTS ── */
+  ul, ol { padding-left: 1.4rem; margin-bottom: 0.75rem; }
+  li { margin-bottom: 0.3rem; }
+
+  /* ── HIGHLIGHT BOXES ── */
+  .exam-q {
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 0.75rem 0;
+  }
+  .exam-q-title { font-size: 11px; text-transform: uppercase; color: #c2410c; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: 0.06em; }
+
+  .ans-box {
+    background: #f0fdf4;
+    border-left: 3px solid #22c55e;
+    padding: 0.85rem 1rem;
+    margin: 0.5rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 14px;
+  }
+
+  .syntax-box {
+    background: #faf5ff;
+    border: 1px dashed #a78bfa;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    margin: 0.75rem 0;
+    font-family: monospace;
+    font-size: 13px;
+    color: #4c1d95;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4338ca 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+  .hero h1 { color: #e0e7ff; font-size: 28px; margin-bottom: 0.5rem; }
+  .hero p { color: #c7d2fe; margin-bottom: 0; }
+
+  /* ── GRID ── */
+  .topic-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0.75rem; margin-bottom: 1rem; }
+  .topic-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.85rem;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .topic-card:hover { border-color: var(--primary); background: var(--primary-light); transform: translateY(-2px); }
+  .topic-card .tc-icon { font-size: 24px; margin-bottom: 0.4rem; display: block; }
+
+  /* ── Q BANK ── */
+  .q-item {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+  }
+  .q-head {
+    padding: 0.85rem 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 14px;
+  }
+  .q-head:hover { background: var(--gray-light); }
+  .q-marks {
+    background: var(--primary);
+    color: #fff;
+    border-radius: 4px;
+    padding: 1px 8px;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .q-body {
+    display: none;
+    padding: 0 1rem 1rem;
+    font-size: 14px;
+    border-top: 1px solid var(--border);
+    padding-top: 0.75rem;
+  }
+  .q-body.open { display: block; }
+
+  /* ── CHEAT SHEET ── */
+  .cheat-block {
+    background: #fafafa;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  .cheat-block h4 { color: var(--primary); font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+
+  /* ── DIVIDER ── */
+  .divider { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+
+  /* ── SCROLLBAR ── */
+  nav::-webkit-scrollbar { width: 4px; }
+  nav::-webkit-scrollbar-thumb { background: #4338ca; border-radius: 4px; }
+
+  .star { color: #f59e0b; }
+  .highlight { background: #fef9c3; padding: 1px 4px; border-radius: 3px; }
+
+  @media (max-width: 768px) {
+    nav { display: none; }
+    main { padding: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════
+     NAVIGATION SIDEBAR
+═══════════════════════════════════════════════════ -->
+<nav id="sidebar">
+  <div class="nav-header">
+    📚 BCA Web Design
+    <span>Complete Exam Guide</span>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-label">Overview</div>
+    <a href="#" onclick="show('overview')" class="active">🏠 Syllabus & Plan</a>
+    <a href="#" onclick="show('important')">⭐ Important Topics</a>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-label">Unit 1 – HTML</div>
+    <a href="#" onclick="show('html-intro')">HTML Basics</a>
+    <a href="#" onclick="show('html-tags')">Core Tags</a>
+    <a href="#" onclick="show('html-tables')">Tables & Lists</a>
+    <a href="#" onclick="show('html-forms')">Forms</a>
+    <a href="#" onclick="show('html-media')">Multimedia</a>
+    <a href="#" onclick="show('html-links')">Links & Anchors</a>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-label">Unit 2 – CSS</div>
+    <a href="#" onclick="show('css-intro')">CSS Introduction</a>
+    <a href="#" onclick="show('css-selectors')">Selectors</a>
+    <a href="#" onclick="show('css-box')">Box Model</a>
+    <a href="#" onclick="show('css-fonts')">Fonts & Text</a>
+    <a href="#" onclick="show('css-methods')">Applying CSS</a>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-label">Unit 3 – JavaScript</div>
+    <a href="#" onclick="show('js-intro')">JS Introduction</a>
+    <a href="#" onclick="show('js-vars')">Variables & DataTypes</a>
+    <a href="#" onclick="show('js-operators')">Operators</a>
+    <a href="#" onclick="show('js-conditions')">Conditions</a>
+    <a href="#" onclick="show('js-loops')">Loops</a>
+    <a href="#" onclick="show('js-functions')">Functions</a>
+    <a href="#" onclick="show('js-events')">Events</a>
+    <a href="#" onclick="show('js-arrays')">Arrays</a>
+    <a href="#" onclick="show('js-objects')">Built-in Objects</a>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-label">Exam Prep</div>
+    <a href="#" onclick="show('qbank')">📝 Question Bank</a>
+    <a href="#" onclick="show('predicted')">🎯 Predicted Qs</a>
+    <a href="#" onclick="show('cheatsheet')">⚡ Cheat Sheet</a>
+    <a href="#" onclick="show('lastmin')">🚀 Last-Minute Tips</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════
+     MAIN CONTENT
+═══════════════════════════════════════════════════ -->
+<main>
+
+<!-- ════════ OVERVIEW ════════ -->
+<section id="overview" class="active">
+  <div class="hero">
+    <h1>BCA Web Designing – Complete Exam Guide</h1>
+    <p>Comprehensive coverage of HTML, CSS & JavaScript | Exam-oriented | Beginner-friendly</p>
+  </div>
+
+  <h2>📋 Syllabus Overview</h2>
+  <table class="tbl">
+    <tr><th>Unit</th><th>Topics</th><th>Weightage</th></tr>
+    <tr><td><strong>Unit 1 – HTML</strong></td><td>Tags, Structure, Tables, Forms, Lists, Multimedia, Links</td><td><span class="badge badge-red">High</span></td></tr>
+    <tr><td><strong>Unit 2 – CSS</strong></td><td>Selectors, Box Model, Fonts, Colors, Methods of applying CSS</td><td><span class="badge badge-red">High</span></td></tr>
+    <tr><td><strong>Unit 3 – JS</strong></td><td>Variables, Operators, Conditions, Loops, Functions, Events, Arrays, Objects</td><td><span class="badge badge-yellow">Medium-High</span></td></tr>
+  </table>
+
+  <h2>📅 Study Plan (If Exam is Tomorrow)</h2>
+  <div class="card-grid">
+    <div class="card">
+      <h4>Hour 1–2: HTML Core</h4>
+      <ul>
+        <li>Document structure</li>
+        <li>All basic tags</li>
+        <li>Tables, Lists, Forms</li>
+        <li>Links & Images</li>
+      </ul>
+      <span class="badge badge-red">Must Do</span>
+    </div>
+    <div class="card">
+      <h4>Hour 3–4: CSS Complete</h4>
+      <ul>
+        <li>3 types of CSS</li>
+        <li>All 3 selectors</li>
+        <li>Box model properties</li>
+        <li>Font & color properties</li>
+      </ul>
+      <span class="badge badge-red">Must Do</span>
+    </div>
+    <div class="card">
+      <h4>Hour 5–6: JavaScript</h4>
+      <ul>
+        <li>Variables & data types</li>
+        <li>All operators</li>
+        <li>if/else, switch</li>
+        <li>All 3 loops</li>
+      </ul>
+      <span class="badge badge-yellow">High Priority</span>
+    </div>
+    <div class="card">
+      <h4>Hour 7–8: JS Advanced</h4>
+      <ul>
+        <li>Functions</li>
+        <li>Events & handlers</li>
+        <li>Arrays</li>
+        <li>Built-in objects</li>
+      </ul>
+      <span class="badge badge-green">If Time Allows</span>
+    </div>
+  </div>
+
+  <h2>🗺️ Topic Mind Map</h2>
+  <div class="card">
+    <div style="text-align:center; font-size:13px; line-height:2.2;">
+      <div style="background:#1e1b4b;color:#e0e7ff;border-radius:8px;display:inline-block;padding:6px 20px;font-weight:700;font-size:16px;">Web Designing</div>
+      <br>
+      <span style="font-size:20px; color:#6b7280;">↙ &nbsp;&nbsp;&nbsp; ↓ &nbsp;&nbsp;&nbsp; ↘</span>
+      <br>
+      <div style="display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;">
+        <div style="background:#dbeafe;color:#1e3a8a;border-radius:8px;padding:8px 16px;">
+          <strong>HTML</strong><br>
+          <small>Structure</small>
+        </div>
+        <div style="background:#dcfce7;color:#14532d;border-radius:8px;padding:8px 16px;">
+          <strong>CSS</strong><br>
+          <small>Presentation</small>
+        </div>
+        <div style="background:#fef3c7;color:#78350f;border-radius:8px;padding:8px 16px;">
+          <strong>JavaScript</strong><br>
+          <small>Behavior</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ IMPORTANT TOPICS ════════ -->
+<section id="important">
+  <h1>⭐ Important Topics for Exam</h1>
+
+  <div class="callout callout-warn">
+    <span class="callout-icon">🔥</span>
+    <div>Topics marked <strong>VERY IMPORTANT</strong> are highly likely to appear. Study these first!</div>
+  </div>
+
+  <h2>HTML – Must-Know Topics</h2>
+  <table class="tbl">
+    <tr><th>Topic</th><th>Priority</th><th>Expected Marks</th></tr>
+    <tr><td>Structure of HTML document</td><td><span class="badge badge-red">VERY IMP</span></td><td>5–10 marks</td></tr>
+    <tr><td>Form tags (input types, textarea, select)</td><td><span class="badge badge-red">VERY IMP</span></td><td>5–10 marks</td></tr>
+    <tr><td>Table tags (tr, td, th, colspan, rowspan)</td><td><span class="badge badge-red">VERY IMP</span></td><td>5 marks</td></tr>
+    <tr><td>List types (OL, UL, DL)</td><td><span class="badge badge-yellow">IMPORTANT</span></td><td>2–5 marks</td></tr>
+    <tr><td>Anchor tag & hyperlinks</td><td><span class="badge badge-yellow">IMPORTANT</span></td><td>2–5 marks</td></tr>
+    <tr><td>Formatting tags (bold, italic, etc.)</td><td><span class="badge badge-yellow">IMPORTANT</span></td><td>2 marks</td></tr>
+    <tr><td>Image tag &amp; attributes</td><td><span class="badge badge-green">OPTIONAL</span></td><td>2 marks</td></tr>
+    <tr><td>Audio & Video tags</td><td><span class="badge badge-green">OPTIONAL</span></td><td>2 marks</td></tr>
+  </table>
+
+  <h2>CSS – Must-Know Topics</h2>
+  <table class="tbl">
+    <tr><th>Topic</th><th>Priority</th><th>Expected Marks</th></tr>
+    <tr><td>Three types of CSS (Inline, Internal, External)</td><td><span class="badge badge-red">VERY IMP</span></td><td>5–10 marks</td></tr>
+    <tr><td>CSS Selectors (Type, ID, Class)</td><td><span class="badge badge-red">VERY IMP</span></td><td>5–10 marks</td></tr>
+    <tr><td>Box Model (margin, padding, border)</td><td><span class="badge badge-red">VERY IMP</span></td><td>5 marks</td></tr>
+    <tr><td>CSS Colors & Background color</td><td><span class="badge badge-yellow">IMPORTANT</span></td><td>2–5 marks</td></tr>
+    <tr><td>Font properties (family, style, size)</td><td><span class="badge badge-yellow">IMPORTANT</span></td><td>2–5 marks</td></tr>
+    <tr><td>Text align & text indent</td><td><span class="badge badge-yellow">IMPORTANT</span></td><td>2 marks</td></tr>
+    <tr><td>Float property</td><td><span class="badge badge-green">OPTIONAL</span></td><td>2 marks</td></tr>
+    <tr><td>CSS Advantages & Disadvantages</td><td><span class="badge badge-yellow">IMPORTANT</span></td><td>5 marks</td></tr>
+  </table>
+
+  <h2>JavaScript – Must-Know Topics</h2>
+  <table class="tbl">
+    <tr><th>Topic</th><th>Priority</th><th>Expected Marks</th></tr>
+    <tr><td>Variables & Data Types</td><td><span class="badge badge-red">VERY IMP</span></td><td>5 marks</td></tr>
+    <tr><td>All Operators (arithmetic, assignment, comparison, logical)</td><td><span class="badge badge-red">VERY IMP</span></td><td>5–10 marks</td></tr>
+    <tr><td>if / if-else / if-else if / switch</td><td><span class="badge badge-red">VERY IMP</span></td><td>5–10 marks</td></tr>
+    <tr><td>for loop, while loop, do-while loop</td><td><span class="badge badge-red">VERY IMP</span></td><td>5–10 marks</td></tr>
+    <tr><td>Functions & return statement</td><td><span class="badge badge-yellow">IMPORTANT</span></td><td>5 marks</td></tr>
+    <tr><td>Events & Event Handlers</td><td><span class="badge badge-yellow">IMPORTANT</span></td><td>5 marks</td></tr>
+    <tr><td>Arrays (creating, accessing, length)</td><td><span class="badge badge-yellow">IMPORTANT</span></td><td>5 marks</td></tr>
+    <tr><td>Built-in Objects (Date, Math, String)</td><td><span class="badge badge-green">OPTIONAL</span></td><td>2–5 marks</td></tr>
+  </table>
+</section>
+
+<!-- ════════ HTML BASICS ════════ -->
+<section id="html-intro">
+  <h1>🏗️ HTML – Introduction</h1>
+
+  <div class="callout callout-info">
+    <span class="callout-icon">💡</span>
+    <div><strong>Definition:</strong> HTML (HyperText Markup Language) is the standard language used to create web pages. It uses <em>tags</em> to structure content.</div>
+  </div>
+
+  <h2>Key Features of HTML</h2>
+  <ul>
+    <li>Not a programming language – it is a <strong>markup language</strong></li>
+    <li>Uses <strong>tags</strong> enclosed in angle brackets <code>&lt; &gt;</code></li>
+    <li>Tags come in pairs: <code>&lt;tag&gt;</code> (opening) and <code>&lt;/tag&gt;</code> (closing)</li>
+    <li>Empty tags have no closing tag: <code>&lt;br&gt;</code>, <code>&lt;hr&gt;</code>, <code>&lt;img&gt;</code></li>
+    <li>HTML is <strong>NOT case sensitive</strong> (unlike JavaScript!)</li>
+    <li>Files saved with <code>.html</code> or <code>.htm</code> extension</li>
+  </ul>
+
+  <h2>Structure of an HTML Document</h2>
+  <div class="callout callout-imp">
+    <span class="callout-icon">⭐</span>
+    <div>This is a <strong>VERY IMPORTANT</strong> topic. You will almost certainly get a 5 or 10 mark question on this.</div>
+  </div>
+
+  <pre><code><span class="tag">&lt;!DOCTYPE html&gt;</span>           <span class="cm">&lt;!-- tells browser this is HTML5 --&gt;</span>
+<span class="tag">&lt;html&gt;</span>                     <span class="cm">&lt;!-- root element --&gt;</span>
+
+  <span class="tag">&lt;head&gt;</span>                   <span class="cm">&lt;!-- contains meta information --&gt;</span>
+    <span class="tag">&lt;title&gt;</span>My Page<span class="tag">&lt;/title&gt;</span>  <span class="cm">&lt;!-- appears on browser tab --&gt;</span>
+  <span class="tag">&lt;/head&gt;</span>
+
+  <span class="tag">&lt;body&gt;</span>                   <span class="cm">&lt;!-- visible content goes here --&gt;</span>
+    <span class="tag">&lt;h1&gt;</span>Hello World<span class="tag">&lt;/h1&gt;</span>
+    <span class="tag">&lt;p&gt;</span>This is a paragraph.<span class="tag">&lt;/p&gt;</span>
+  <span class="tag">&lt;/body&gt;</span>
+
+<span class="tag">&lt;/html&gt;</span></code></pre>
+
+  <h3>Parts Explained:</h3>
+  <table class="tbl">
+    <tr><th>Part</th><th>Purpose</th></tr>
+    <tr><td><code>&lt;!DOCTYPE html&gt;</code></td><td>Declaration that tells browser it's an HTML5 document</td></tr>
+    <tr><td><code>&lt;html&gt;</code></td><td>Root element – wraps everything</td></tr>
+    <tr><td><code>&lt;head&gt;</code></td><td>Contains title, meta info, CSS links, JS links (NOT visible on page)</td></tr>
+    <tr><td><code>&lt;title&gt;</code></td><td>Text shown on the browser tab</td></tr>
+    <tr><td><code>&lt;body&gt;</code></td><td>All visible content: headings, paragraphs, images, forms, etc.</td></tr>
+  </table>
+
+  <h2>Website vs Webpage</h2>
+  <table class="tbl">
+    <tr><th>Webpage</th><th>Website</th></tr>
+    <tr><td>A single document on the web</td><td>A collection of related webpages</td></tr>
+    <tr><td>Single .html file</td><td>Multiple .html files + CSS + JS</td></tr>
+    <tr><td>Example: Home page of Google</td><td>Example: www.google.com (entire site)</td></tr>
+  </table>
+
+  <h2>Static vs Dynamic Website</h2>
+  <table class="tbl">
+    <tr><th>Static</th><th>Dynamic</th></tr>
+    <tr><td>Content doesn't change</td><td>Content changes based on user/server</td></tr>
+    <tr><td>Made with HTML, CSS only</td><td>Made with PHP, Node.js, databases</td></tr>
+    <tr><td>Faster to load</td><td>Slower but more powerful</td></tr>
+    <tr><td>Example: Personal portfolio</td><td>Example: Amazon, Facebook</td></tr>
+  </table>
+
+  <div class="exam-q">
+    <div class="exam-q-title">⭐ 2-Mark Exam Questions</div>
+    <p>Q1: What is HTML? Q2: What is the use of &lt;title&gt; tag? Q3: Distinguish static vs dynamic website. Q4: What is DOCTYPE?</p>
+  </div>
+</section>
+
+<!-- ════════ HTML TAGS ════════ -->
+<section id="html-tags">
+  <h1>🏷️ HTML – Core Tags</h1>
+
+  <h2>Heading Tags</h2>
+  <p>HTML has 6 levels of headings: <code>&lt;h1&gt;</code> (largest) to <code>&lt;h6&gt;</code> (smallest).</p>
+  <div class="callout callout-tip">
+    <span class="callout-icon">✅</span>
+    <div>Default alignment of headings is <strong>LEFT</strong>. Use <code>align="center"</code> to center them.</div>
+  </div>
+  <pre><code><span class="tag">&lt;h1</span> <span class="attr">align</span>=<span class="val">"center"</span><span class="tag">&gt;</span>Largest Heading<span class="tag">&lt;/h1&gt;</span>
+<span class="tag">&lt;h2&gt;</span>Second Heading<span class="tag">&lt;/h2&gt;</span>
+<span class="tag">&lt;h6&gt;</span>Smallest Heading<span class="tag">&lt;/h6&gt;</span></code></pre>
+
+  <h2>Paragraph & Break Tags</h2>
+  <table class="tbl">
+    <tr><th>Tag</th><th>Type</th><th>Purpose</th></tr>
+    <tr><td><code>&lt;p&gt;</code></td><td>Container tag</td><td>Creates a paragraph (adds space before/after)</td></tr>
+    <tr><td><code>&lt;br&gt;</code></td><td>Empty tag</td><td>Inserts a line break (no closing tag needed)</td></tr>
+    <tr><td><code>&lt;hr&gt;</code></td><td>Empty tag</td><td>Creates a horizontal line/rule</td></tr>
+  </table>
+
+  <div class="callout callout-warn">
+    <span class="callout-icon">⚠️</span>
+    <div>Common exam trap: <strong>&lt;p&gt; has a closing tag</strong>, but <strong>&lt;br&gt; and &lt;hr&gt; do NOT</strong>. They are empty/void elements.</div>
+  </div>
+
+  <h2>Formatting Tags</h2>
+  <table class="tbl">
+    <tr><th>Tag</th><th>Effect</th><th>Example Output</th></tr>
+    <tr><td><code>&lt;b&gt;</code> or <code>&lt;strong&gt;</code></td><td>Bold</td><td><strong>Bold text</strong></td></tr>
+    <tr><td><code>&lt;i&gt;</code> or <code>&lt;em&gt;</code></td><td>Italic</td><td><em>Italic text</em></td></tr>
+    <tr><td><code>&lt;u&gt;</code></td><td>Underline</td><td><u>Underlined text</u></td></tr>
+    <tr><td><code>&lt;strike&gt;</code></td><td>Strikethrough</td><td><s>Struck through</s></td></tr>
+    <tr><td><code>&lt;sup&gt;</code></td><td>Superscript</td><td>x<sup>2</sup></td></tr>
+    <tr><td><code>&lt;sub&gt;</code></td><td>Subscript</td><td>H<sub>2</sub>O</td></tr>
+    <tr><td><code>&lt;big&gt;</code></td><td>Bigger text</td><td>Larger than normal</td></tr>
+    <tr><td><code>&lt;small&gt;</code></td><td>Smaller text</td><td>Smaller than normal</td></tr>
+  </table>
+
+  <h2>Font Tag</h2>
+  <pre><code><span class="tag">&lt;font</span> <span class="attr">face</span>=<span class="val">"Arial"</span> <span class="attr">color</span>=<span class="val">"red"</span> <span class="attr">size</span>=<span class="val">"5"</span><span class="tag">&gt;</span>Styled Text<span class="tag">&lt;/font&gt;</span></code></pre>
+  <table class="tbl">
+    <tr><th>Attribute</th><th>Purpose</th></tr>
+    <tr><td>face</td><td>Font name (Arial, Times New Roman, etc.)</td></tr>
+    <tr><td>color</td><td>Text color (red, #FF0000, rgb(255,0,0))</td></tr>
+    <tr><td>size</td><td>Font size (1–7, default is 3)</td></tr>
+  </table>
+
+  <h2>Body Tag Attributes</h2>
+  <pre><code><span class="tag">&lt;body</span>
+  <span class="attr">bgcolor</span>=<span class="val">"lightblue"</span>
+  <span class="attr">background</span>=<span class="val">"image.jpg"</span>
+  <span class="attr">text</span>=<span class="val">"black"</span>
+  <span class="attr">link</span>=<span class="val">"blue"</span>
+  <span class="attr">alink</span>=<span class="val">"red"</span>
+  <span class="attr">vlink</span>=<span class="val">"purple"</span><span class="tag">&gt;</span></code></pre>
+
+  <div class="exam-q">
+    <div class="exam-q-title">⭐ Exam Questions</div>
+    <p>Q: List formatting tags in HTML. Q: What are attributes of &lt;body&gt; tag? Q: Difference between &lt;b&gt; and &lt;strong&gt;. Q: What is an empty tag? Give 2 examples.</p>
+  </div>
+</section>
+
+<!-- ════════ HTML TABLES & LISTS ════════ -->
+<section id="html-tables">
+  <h1>📊 HTML – Tables & Lists</h1>
+
+  <h2>HTML Tables</h2>
+  <div class="callout callout-imp">
+    <span class="callout-icon">⭐</span>
+    <div>Tables appear almost every exam. Know <code>colspan</code> and <code>rowspan</code> well!</div>
+  </div>
+
+  <h3>Table Tags</h3>
+  <table class="tbl">
+    <tr><th>Tag</th><th>Purpose</th></tr>
+    <tr><td><code>&lt;table&gt;</code></td><td>Creates a table</td></tr>
+    <tr><td><code>&lt;tr&gt;</code></td><td>Table Row</td></tr>
+    <tr><td><code>&lt;th&gt;</code></td><td>Table Header cell (bold + centered by default)</td></tr>
+    <tr><td><code>&lt;td&gt;</code></td><td>Table Data cell</td></tr>
+  </table>
+
+  <h3>Table Attributes</h3>
+  <table class="tbl">
+    <tr><th>Attribute</th><th>Used with</th><th>Purpose</th></tr>
+    <tr><td>border</td><td>&lt;table&gt;</td><td>Width of table border (e.g., border="1")</td></tr>
+    <tr><td>align</td><td>&lt;table&gt;, &lt;td&gt;</td><td>Horizontal alignment</td></tr>
+    <tr><td>bgcolor</td><td>&lt;table&gt;, &lt;td&gt;</td><td>Background color</td></tr>
+    <tr><td>cellpadding</td><td>&lt;table&gt;</td><td>Space between cell content and border</td></tr>
+    <tr><td>cellspacing</td><td>&lt;table&gt;</td><td>Space between cells</td></tr>
+    <tr><td>colspan</td><td>&lt;td&gt;, &lt;th&gt;</td><td>Merge columns horizontally</td></tr>
+    <tr><td>rowspan</td><td>&lt;td&gt;, &lt;th&gt;</td><td>Merge rows vertically</td></tr>
+    <tr><td>width / height</td><td>&lt;table&gt;, &lt;td&gt;</td><td>Size of table/cell</td></tr>
+  </table>
+
+  <h3>Example Table with Colspan</h3>
+  <pre><code><span class="tag">&lt;table</span> <span class="attr">border</span>=<span class="val">"1"</span> <span class="attr">cellpadding</span>=<span class="val">"5"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;tr&gt;</span>
+    <span class="tag">&lt;th</span> <span class="attr">colspan</span>=<span class="val">"3"</span><span class="tag">&gt;</span>Student Results<span class="tag">&lt;/th&gt;</span>
+  <span class="tag">&lt;/tr&gt;</span>
+  <span class="tag">&lt;tr&gt;</span>
+    <span class="tag">&lt;td&gt;</span>Name<span class="tag">&lt;/td&gt;</span>
+    <span class="tag">&lt;td&gt;</span>Subject<span class="tag">&lt;/td&gt;</span>
+    <span class="tag">&lt;td&gt;</span>Marks<span class="tag">&lt;/td&gt;</span>
+  <span class="tag">&lt;/tr&gt;</span>
+  <span class="tag">&lt;tr&gt;</span>
+    <span class="tag">&lt;td</span> <span class="attr">rowspan</span>=<span class="val">"2"</span><span class="tag">&gt;</span>Numan<span class="tag">&lt;/td&gt;</span>
+    <span class="tag">&lt;td&gt;</span>Web Design<span class="tag">&lt;/td&gt;</span>
+    <span class="tag">&lt;td&gt;</span>95<span class="tag">&lt;/td&gt;</span>
+  <span class="tag">&lt;/tr&gt;</span>
+<span class="tag">&lt;/table&gt;</span></code></pre>
+
+  <h2>HTML Lists</h2>
+  <table class="tbl">
+    <tr><th>List Type</th><th>Tag</th><th>Item Tag</th><th>Display</th></tr>
+    <tr><td>Unordered (Bulleted)</td><td><code>&lt;ul&gt;</code></td><td><code>&lt;li&gt;</code></td><td>Bullets (●, ○, ■)</td></tr>
+    <tr><td>Ordered (Numbered)</td><td><code>&lt;ol&gt;</code></td><td><code>&lt;li&gt;</code></td><td>Numbers, letters, roman</td></tr>
+    <tr><td>Definition List</td><td><code>&lt;dl&gt;</code></td><td><code>&lt;dt&gt;</code>, <code>&lt;dd&gt;</code></td><td>Term + Definition</td></tr>
+  </table>
+
+  <pre><code><span class="cm">&lt;!-- Unordered List --&gt;</span>
+<span class="tag">&lt;ul</span> <span class="attr">type</span>=<span class="val">"disc"</span><span class="tag">&gt;</span>  <span class="cm">&lt;!-- disc | circle | square --&gt;</span>
+  <span class="tag">&lt;li&gt;</span>HTML<span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;</span>CSS<span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ul&gt;</span>
+
+<span class="cm">&lt;!-- Ordered List --&gt;</span>
+<span class="tag">&lt;ol</span> <span class="attr">type</span>=<span class="val">"1"</span><span class="tag">&gt;</span>  <span class="cm">&lt;!-- 1 | a | A | i | I --&gt;</span>
+  <span class="tag">&lt;li&gt;</span>First<span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;</span>Second<span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ol&gt;</span>
+
+<span class="cm">&lt;!-- Definition List --&gt;</span>
+<span class="tag">&lt;dl&gt;</span>
+  <span class="tag">&lt;dt&gt;</span>HTML<span class="tag">&lt;/dt&gt;</span>
+  <span class="tag">&lt;dd&gt;</span>HyperText Markup Language<span class="tag">&lt;/dd&gt;</span>
+<span class="tag">&lt;/dl&gt;</span></code></pre>
+
+  <div class="callout callout-tip">
+    <span class="callout-icon">🧠</span>
+    <div><strong>Memory Trick:</strong> UL = Unordered List (bullets), OL = Ordered List (numbers), DL = Definition List (terms + meanings). <strong>UL, OL use &lt;li&gt;</strong> but DL uses <strong>&lt;dt&gt;</strong> (term) and <strong>&lt;dd&gt;</strong> (definition).</div>
+  </div>
+
+  <div class="exam-q">
+    <div class="exam-q-title">⭐ Exam Questions</div>
+    <p>Q: What are the types of lists in HTML? Q: Explain colspan and rowspan with example. Q: Write HTML code to create a table with border. Q: What is cellpadding vs cellspacing?</p>
+  </div>
+</section>
+
+<!-- ════════ HTML FORMS ════════ -->
+<section id="html-forms">
+  <h1>📋 HTML – Forms</h1>
+
+  <div class="callout callout-imp">
+    <span class="callout-icon">⭐</span>
+    <div>Forms are a <strong>VERY HIGH PRIORITY</strong> topic. Expect at least a 5–10 mark question!</div>
+  </div>
+
+  <h2>What is a Form?</h2>
+  <p>Forms collect information from users and send it to a server. Key uses: login pages, registration, contact forms, search boxes.</p>
+
+  <h2>Form Tag</h2>
+  <pre><code><span class="tag">&lt;form</span> <span class="attr">action</span>=<span class="val">"process.php"</span> <span class="attr">method</span>=<span class="val">"POST"</span><span class="tag">&gt;</span>
+  <span class="cm">&lt;!-- form elements go here --&gt;</span>
+<span class="tag">&lt;/form&gt;</span></code></pre>
+
+  <table class="tbl">
+    <tr><th>Attribute</th><th>Purpose</th></tr>
+    <tr><td>action</td><td>URL where form data is sent</td></tr>
+    <tr><td>method</td><td>GET (visible in URL) or POST (hidden)</td></tr>
+  </table>
+
+  <h2>Input Types – All Must Know!</h2>
+  <table class="tbl">
+    <tr><th>Input Type</th><th>Tag</th><th>Purpose</th></tr>
+    <tr><td>Text field</td><td><code>&lt;input type="text"&gt;</code></td><td>Single-line text input</td></tr>
+    <tr><td>Password</td><td><code>&lt;input type="password"&gt;</code></td><td>Hides characters typed</td></tr>
+    <tr><td>Radio Button</td><td><code>&lt;input type="radio"&gt;</code></td><td>Select ONE from many choices</td></tr>
+    <tr><td>Checkbox</td><td><code>&lt;input type="checkbox"&gt;</code></td><td>Select ONE or MORE choices</td></tr>
+    <tr><td>Submit Button</td><td><code>&lt;input type="submit"&gt;</code></td><td>Submits the form</td></tr>
+    <tr><td>Reset Button</td><td><code>&lt;input type="reset"&gt;</code></td><td>Clears all form fields</td></tr>
+    <tr><td>Textarea</td><td><code>&lt;textarea&gt;</code></td><td>Multi-line text input</td></tr>
+    <tr><td>Dropdown</td><td><code>&lt;select&gt; + &lt;option&gt;</code></td><td>Drop-down list</td></tr>
+  </table>
+
+  <h2>Complete Form Example</h2>
+  <pre><code><span class="tag">&lt;form</span> <span class="attr">action</span>=<span class="val">"register.php"</span> <span class="attr">method</span>=<span class="val">"POST"</span><span class="tag">&gt;</span>
+
+  Name: <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="val">"text"</span> <span class="attr">name</span>=<span class="val">"name"</span><span class="tag">&gt;&lt;br&gt;</span>
+
+  Password: <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="val">"password"</span> <span class="attr">name</span>=<span class="val">"pwd"</span><span class="tag">&gt;&lt;br&gt;</span>
+
+  Gender:
+  <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="val">"radio"</span> <span class="attr">name</span>=<span class="val">"gender"</span> <span class="attr">value</span>=<span class="val">"male"</span><span class="tag">&gt;</span> Male
+  <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="val">"radio"</span> <span class="attr">name</span>=<span class="val">"gender"</span> <span class="attr">value</span>=<span class="val">"female"</span><span class="tag">&gt;</span> Female<span class="tag">&lt;br&gt;</span>
+
+  Hobbies:
+  <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="val">"checkbox"</span> <span class="attr">name</span>=<span class="val">"hobby"</span> <span class="attr">value</span>=<span class="val">"reading"</span><span class="tag">&gt;</span> Reading
+  <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="val">"checkbox"</span> <span class="attr">name</span>=<span class="val">"hobby"</span> <span class="attr">value</span>=<span class="val">"coding"</span><span class="tag">&gt;</span> Coding<span class="tag">&lt;br&gt;</span>
+
+  City:
+  <span class="tag">&lt;select</span> <span class="attr">name</span>=<span class="val">"city"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;option</span> <span class="attr">value</span>=<span class="val">"delhi"</span><span class="tag">&gt;</span>Delhi<span class="tag">&lt;/option&gt;</span>
+    <span class="tag">&lt;option</span> <span class="attr">value</span>=<span class="val">"mumbai"</span><span class="tag">&gt;</span>Mumbai<span class="tag">&lt;/option&gt;</span>
+  <span class="tag">&lt;/select&gt;&lt;br&gt;</span>
+
+  Message:
+  <span class="tag">&lt;textarea</span> <span class="attr">name</span>=<span class="val">"msg"</span> <span class="attr">rows</span>=<span class="val">"4"</span> <span class="attr">cols</span>=<span class="val">"30"</span><span class="tag">&gt;&lt;/textarea&gt;&lt;br&gt;</span>
+
+  <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="val">"submit"</span> <span class="attr">value</span>=<span class="val">"Register"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="val">"reset"</span> <span class="attr">value</span>=<span class="val">"Clear"</span><span class="tag">&gt;</span>
+
+<span class="tag">&lt;/form&gt;</span></code></pre>
+
+  <h2>Radio vs Checkbox</h2>
+  <table class="tbl">
+    <tr><th>Radio Button</th><th>Checkbox</th></tr>
+    <tr><td>Select only ONE option</td><td>Select ONE or MORE options</td></tr>
+    <tr><td><code>type="radio"</code></td><td><code>type="checkbox"</code></td></tr>
+    <tr><td>Same <code>name</code> = one group</td><td>Each can have different name</td></tr>
+    <tr><td>Example: Gender selection</td><td>Example: Hobby selection</td></tr>
+  </table>
+
+  <h2>Combo Box vs Drop Down Box</h2>
+  <table class="tbl">
+    <tr><th>Drop Down Box</th><th>Combo Box</th></tr>
+    <tr><td>Shows a list of options</td><td>Combination of select + text input</td></tr>
+    <tr><td>Created with &lt;select&gt; + &lt;option&gt;</td><td>select element + input type="text"</td></tr>
+    <tr><td>User can only select from list</td><td>User can also type custom value</td></tr>
+  </table>
+
+  <div class="exam-q">
+    <div class="exam-q-title">⭐ Exam Questions</div>
+    <p>Q: Create a registration form using HTML. Q: Differentiate radio button and checkbox. Q: What is a text area? Q: Explain drop-down box in HTML. Q: What are attributes of &lt;input&gt; tag?</p>
+  </div>
+</section>
+
+<!-- ════════ HTML MULTIMEDIA ════════ -->
+<section id="html-media">
+  <h1>🎬 HTML – Multimedia (Images, Audio, Video)</h1>
+
+  <h2>Image Tag</h2>
+  <pre><code><span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="val">"photo.jpg"</span>
+     <span class="attr">alt</span>=<span class="val">"A photo"</span>
+     <span class="attr">width</span>=<span class="val">"300"</span>
+     <span class="attr">height</span>=<span class="val">"200"</span>
+     <span class="attr">border</span>=<span class="val">"2"</span><span class="tag">&gt;</span></code></pre>
+
+  <table class="tbl">
+    <tr><th>Attribute</th><th>Purpose</th></tr>
+    <tr><td>src</td><td>Path to image file (MANDATORY)</td></tr>
+    <tr><td>alt</td><td>Alternative text if image doesn't load</td></tr>
+    <tr><td>width / height</td><td>Image dimensions in pixels or %</td></tr>
+    <tr><td>border</td><td>Border thickness around image</td></tr>
+    <tr><td>align</td><td>Alignment of image (left, right, center)</td></tr>
+    <tr><td>hspace / vspace</td><td>Horizontal/vertical space around image</td></tr>
+  </table>
+
+  <h2>Audio Tag (HTML5)</h2>
+  <pre><code><span class="tag">&lt;audio</span> <span class="attr">controls</span> <span class="attr">autoplay</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;source</span> <span class="attr">src</span>=<span class="val">"song.mp3"</span> <span class="attr">type</span>=<span class="val">"audio/mp3"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;source</span> <span class="attr">src</span>=<span class="val">"song.ogg"</span> <span class="attr">type</span>=<span class="val">"audio/ogg"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/audio&gt;</span></code></pre>
+
+  <p>Supported audio types: <strong>MP3, WAV, OGG</strong></p>
+
+  <h2>Video Tag (HTML5)</h2>
+  <pre><code><span class="tag">&lt;video</span> <span class="attr">width</span>=<span class="val">"320"</span> <span class="attr">height</span>=<span class="val">"240"</span> <span class="attr">controls</span> <span class="attr">autoplay</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;source</span> <span class="attr">src</span>=<span class="val">"movie.mp4"</span> <span class="attr">type</span>=<span class="val">"video/mp4"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/video&gt;</span></code></pre>
+
+  <div class="callout callout-tip">
+    <span class="callout-icon">🧠</span>
+    <div><strong>Memory Trick:</strong> To start video automatically – use <code>autoplay</code> attribute. Both audio and video use <code>controls</code> to show play/pause buttons.</div>
+  </div>
+
+  <div class="exam-q">
+    <div class="exam-q-title">⭐ Exam Questions</div>
+    <p>Q: List attributes of &lt;img&gt; tag. Q: How do you embed audio in HTML? Q: What attribute is used to auto-play a video? Q: What types of audio can be embedded?</p>
+  </div>
+</section>
+
+<!-- ════════ HTML LINKS ════════ -->
+<section id="html-links">
+  <h1>🔗 HTML – Links & Anchors</h1>
+
+  <h2>Anchor Tag</h2>
+  <pre><code><span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="val">"https://www.google.com"</span> <span class="attr">target</span>=<span class="val">"_blank"</span><span class="tag">&gt;</span>
+  Click to go to Google
+<span class="tag">&lt;/a&gt;</span></code></pre>
+
+  <table class="tbl">
+    <tr><th>Attribute</th><th>Purpose</th></tr>
+    <tr><td>href</td><td>URL of the linked page (MANDATORY) – HREF = HyperText REFerence</td></tr>
+    <tr><td>target</td><td>Where to open link: _blank=new tab, _self=same tab, _parent, _top</td></tr>
+    <tr><td>name</td><td>Creates a named anchor (for internal links)</td></tr>
+  </table>
+
+  <h3>An Anchor Element has 3 Parts:</h3>
+  <ol>
+    <li><strong>href</strong> – mandatory, specifies the URL</li>
+    <li><strong>The text or image</strong> to be hyperlinked (between tags)</li>
+    <li><strong>The closing tag</strong> <code>&lt;/a&gt;</code></li>
+  </ol>
+
+  <h2>Types of Linking</h2>
+  <table class="tbl">
+    <tr><th>Type</th><th>Meaning</th><th>Example</th></tr>
+    <tr><td>External Linking</td><td>Links to another website/file</td><td><code>href="https://google.com"</code></td></tr>
+    <tr><td>Internal Linking</td><td>Links to sections of same page</td><td><code>href="#section1"</code></td></tr>
+    <tr><td>Email Linking</td><td>Opens email client</td><td><code>href="mailto:abc@gmail.com"</code></td></tr>
+  </table>
+
+  <pre><code><span class="cm">&lt;!-- External Link --&gt;</span>
+<span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="val">"https://google.com"</span><span class="tag">&gt;</span>Go to Google<span class="tag">&lt;/a&gt;</span>
+
+<span class="cm">&lt;!-- Email Link --&gt;</span>
+<span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="val">"mailto:info@gmail.com"</span><span class="tag">&gt;</span>Email Us<span class="tag">&lt;/a&gt;</span>
+
+<span class="cm">&lt;!-- Internal Link - create anchor --&gt;</span>
+<span class="tag">&lt;a</span> <span class="attr">name</span>=<span class="val">"top"</span><span class="tag">&gt;&lt;/a&gt;</span>
+<span class="cm">&lt;!-- jump to anchor --&gt;</span>
+<span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="val">"#top"</span><span class="tag">&gt;</span>Go to Top<span class="tag">&lt;/a&gt;</span></code></pre>
+
+  <div class="exam-q">
+    <div class="exam-q-title">⭐ Exam Questions</div>
+    <p>Q: HREF stands for _____. Q: What is mailto? Q: Distinguish internal and external linking. Q: Write the 3 parts of an anchor element. Q: What does target="_blank" do?</p>
+  </div>
+</section>
+
+<!-- ════════ CSS INTRO ════════ -->
+<section id="css-intro">
+  <h1>🎨 CSS – Introduction</h1>
+
+  <div class="callout callout-info">
+    <span class="callout-icon">💡</span>
+    <div><strong>Definition:</strong> CSS (Cascading Style Sheets) is a style sheet language used to control the look and formatting of a document written in HTML. It adds style (fonts, colors, spacing) to web documents.</div>
+  </div>
+
+  <h2>Key Points About CSS</h2>
+  <ul>
+    <li>CSS stands for <strong>C</strong>ascading <strong>S</strong>tyle <strong>S</strong>heets</li>
+    <li>CSS describes how HTML elements are displayed on screen, paper, or media</li>
+    <li>CSS specifications are maintained by <strong>W3C</strong> (World Wide Web Consortium)</li>
+    <li>CSS can control the layout of multiple pages all at once</li>
+  </ul>
+
+  <h2>Advantages of CSS</h2>
+  <table class="tbl">
+    <tr><th>Advantage</th><th>Explanation</th></tr>
+    <tr><td>Handles look and feel</td><td>Controls color, fonts, spacing, layout, background</td></tr>
+    <tr><td>Saves time</td><td>Write CSS once, reuse across many pages</td></tr>
+    <tr><td>Pages load faster</td><td>Less code = faster download. One CSS rule applies to all matching elements</td></tr>
+    <tr><td>Easy maintenance</td><td>Change one CSS file = all pages update automatically</td></tr>
+    <tr><td>Easy to learn</td><td>Simple syntax</td></tr>
+  </table>
+
+  <h2>Disadvantages of CSS</h2>
+  <ul>
+    <li><strong>Browser compatibility issues</strong> – CSS displays differently in different browsers</li>
+    <li>Multiple levels of CSS can cause confusion</li>
+    <li>Security issues with some CSS properties</li>
+  </ul>
+
+  <h2>CSS Syntax</h2>
+  <div class="callout callout-imp">
+    <span class="callout-icon">⭐</span>
+    <div>Know the CSS syntax diagram perfectly!</div>
+  </div>
+
+  <pre><code>selector {
+  property: value;
+  property: value;
+}</code></pre>
+
+  <table class="tbl">
+    <tr><th>Part</th><th>Meaning</th><th>Example</th></tr>
+    <tr><td>Selector</td><td>HTML element(s) to style</td><td>h1, p, table</td></tr>
+    <tr><td>Property</td><td>The style attribute to change</td><td>color, font-size, border</td></tr>
+    <tr><td>Value</td><td>The value for that property</td><td>red, 12px, solid</td></tr>
+  </table>
+
+  <pre><code>h1 {
+  color: blue;
+  font-size: 24px;
+  text-align: center;
+}</code></pre>
+  <p>This means: "Make all h1 headings blue, 24px in size, and centered."</p>
+
+  <h2>CSS Rule Components</h2>
+  <ul>
+    <li><strong>Selector</strong> – HTML tag being styled (h1, p, div, table)</li>
+    <li><strong>Property</strong> – attribute of HTML converted to CSS (color, border)</li>
+    <li><strong>Value</strong> – assigned to property (red, #FF0000, rgb(255,0,0))</li>
+    <li>Declaration block = everything inside { }</li>
+    <li>Each declaration ends with a <strong>semicolon ;</strong></li>
+  </ul>
+
+  <div class="exam-q">
+    <div class="exam-q-title">⭐ Exam Questions</div>
+    <p>Q: What is CSS? What are its advantages? Q: Which are components of a CSS rule? Q: What does CSS stand for? Q: Who maintains CSS specifications?</p>
+  </div>
+</section>
+
+<!-- ════════ CSS SELECTORS ════════ -->
+<section id="css-selectors">
+  <h1>🎯 CSS – Selectors</h1>
+
+  <div class="callout callout-imp">
+    <span class="callout-icon">⭐</span>
+    <div>Selectors are <strong>VERY IMPORTANT</strong>. The 3 types (Type, ID, Class) are guaranteed to appear in the exam!</div>
+  </div>
+
+  <h2>1. Type Selector (Element Selector)</h2>
+  <p>Selects elements based on their <strong>tag name</strong>. Applies to ALL elements of that type.</p>
+
+  <pre><code>p {
+  color: red;
+  text-align: center;
+}
+<span class="cm">/* ALL &lt;p&gt; elements will be red and centered */</span></code></pre>
+
+  <h2>2. ID Selector</h2>
+  <p>Selects a <strong>specific unique element</strong> using its ID attribute. Uses <strong>#</strong> symbol.</p>
+
+  <div class="callout callout-tip">
+    <span class="callout-icon">🧠</span>
+    <div>ID must be <strong>unique</strong> on the page – only ONE element can have a specific id.</div>
+  </div>
+
+  <pre><code>#para1 {
+  text-align: center;
+  color: red;
+}</code></pre>
+
+  <pre><code><span class="cm">&lt;!-- In HTML: --&gt;</span>
+<span class="tag">&lt;p</span> <span class="attr">id</span>=<span class="val">"para1"</span><span class="tag">&gt;</span>This paragraph is styled.<span class="tag">&lt;/p&gt;</span>
+<span class="tag">&lt;p&gt;</span>This paragraph is NOT affected.<span class="tag">&lt;/p&gt;</span></code></pre>
+
+  <h2>3. Class Selector</h2>
+  <p>Selects elements with a <strong>specific class attribute</strong>. Uses <strong>.</strong> (period/dot) symbol. Multiple elements can share a class.</p>
+
+  <pre><code>.center {
+  text-align: center;
+  color: red;
+}
+<span class="cm">/* Applied to any element with class="center" */</span></code></pre>
+
+  <pre><code><span class="tag">&lt;h1</span> <span class="attr">class</span>=<span class="val">"center"</span><span class="tag">&gt;</span>Red centered heading<span class="tag">&lt;/h1&gt;</span>
+<span class="tag">&lt;p</span> <span class="attr">class</span>=<span class="val">"center"</span><span class="tag">&gt;</span>Red centered paragraph<span class="tag">&lt;/p&gt;</span></code></pre>
+
+  <p>You can also target specific element+class combination:</p>
+  <pre><code>p.center {
+  <span class="cm">/* Only affects &lt;p&gt; elements with class="center" */</span>
+  color: red;
+}</code></pre>
+
+  <h2>Selector Comparison Table</h2>
+  <table class="tbl">
+    <tr><th></th><th>Type Selector</th><th>ID Selector</th><th>Class Selector</th></tr>
+    <tr><td>Symbol</td><td>None (just tag name)</td><td># (hash)</td><td>. (dot)</td></tr>
+    <tr><td>Targets</td><td>All elements of that tag</td><td>One unique element</td><td>All elements with that class</td></tr>
+    <tr><td>HTML attribute</td><td>None needed</td><td>id="name"</td><td>class="name"</td></tr>
+    <tr><td>Example CSS</td><td>p { }</td><td>#myId { }</td><td>.myClass { }</td></tr>
+    <tr><td>Multiple use?</td><td>Applies to all p tags</td><td>No (ID is unique)</td><td>Yes (many elements)</td></tr>
+  </table>
+
+  <h2>Grouping Selectors</h2>
+  <p>Apply same style to multiple selectors by separating with comma:</p>
+  <pre><code>h1, h2, h3 {
+  color: blue;
+  font-weight: normal;
+  letter-spacing: .4em;
+}
+<span class="cm">/* h1, h2, h3 all get same style */</span></code></pre>
+
+  <div class="exam-q">
+    <div class="exam-q-title">⭐ Exam Questions</div>
+    <p>Q: What are selectors? Explain types of selectors. Q: What is the difference between ID and class selector? Q: Write CSS to apply style using class selector. Q: What symbol is used for ID selector? Class selector?</p>
+  </div>
+</section>
+
+<!-- ════════ CSS BOX MODEL ════════ -->
+<section id="css-box">
+  <h1>📦 CSS – Box Model (Margin, Padding, Border)</h1>
+
+  <div class="callout callout-imp">
+    <span class="callout-icon">⭐</span>
+    <div>The CSS Box Model is a <strong>frequently asked</strong> topic. Know margin vs padding vs border!</div>
+  </div>
+
+  <h2>The CSS Box Model</h2>
+  <div style="background:#f0fdf4;border:1px solid #86efac;border-radius:10px;padding:1.5rem;text-align:center;margin:1rem 0;font-size:13px;">
+    <div style="border:2px dashed #6b7280;padding:1rem;border-radius:6px;">
+      MARGIN (space outside border)
+      <div style="background:#fef3c7;border:2px solid #f59e0b;padding:1rem;margin:0.5rem;border-radius:4px;">
+        BORDER
+        <div style="background:#dbeafe;padding:1rem;margin:0.5rem;border-radius:4px;">
+          PADDING (space inside border)
+          <div style="background:#4f46e5;color:#fff;padding:0.75rem;border-radius:4px;">
+            CONTENT (text, images, etc.)
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <table class="tbl">
+    <tr><th>Part</th><th>Definition</th><th>Memory Trick</th></tr>
+    <tr><td><strong>Content</strong></td><td>The actual text/image inside the element</td><td>The "stuff" inside</td></tr>
+    <tr><td><strong>Padding</strong></td><td>Space between content and border (inside)</td><td>Like cushion inside a box</td></tr>
+    <tr><td><strong>Border</strong></td><td>Line surrounding the padding and content</td><td>The box walls</td></tr>
+    <tr><td><strong>Margin</strong></td><td>Space outside the border (between elements)</td><td>Space around the box</td></tr>
+  </table>
+
+  <h2>Margin Property</h2>
+  <pre><code>p { margin: 35px; }  <span class="cm">/* All 4 sides = 35px */</span>
+
+body { margin: 10px 5px 15px 20px; }
+<span class="cm">/* Order: TOP RIGHT BOTTOM LEFT (clockwise) */</span>
+<span class="cm">/* top=10, right=5, bottom=15, left=20 */</span>
+
+p {
+  margin-top: 10px;
+  margin-right: 5px;
+  margin-bottom: 15px;
+  margin-left: 20px;
+}</code></pre>
+
+  <h2>Padding Property</h2>
+  <pre><code>p { padding: 35px; }  <span class="cm">/* All 4 sides */</span>
+
+h1 { padding: 10px 5px 15px 20px; }
+<span class="cm">/* TOP RIGHT BOTTOM LEFT */</span></code></pre>
+
+  <h2>Border Properties</h2>
+
+  <h3>Border Style (MUST declare first!)</h3>
+  <pre><code>p { border-style: solid; }
+p { border-style: dotted; }
+p { border-style: dashed; }
+p { border-style: double; }
+p { border-style: groove; }
+h2 { border-style: dotted solid double dashed; }
+<span class="cm">/* TOP=dotted, RIGHT=solid, BOTTOM=double, LEFT=dashed */</span></code></pre>
+
+  <h3>Border Width</h3>
+  <pre><code>h1 { border-style: solid; border-width: thin; }
+h2 { border-width: thin medium thick 10px; }
+<span class="cm">/* Values: thin | medium | thick | px */</span></code></pre>
+
+  <h3>Border Color</h3>
+  <pre><code>h1 { border-style: solid; border-color: coral; }
+<span class="cm">/* Set color by name, hex (#ff0000), or rgb(255,0,0) */</span>
+h1 { border-style: solid; border-color: red green blue pink; }
+<span class="cm">/* TOP=red, RIGHT=green, BOTTOM=blue, LEFT=pink */</span></code></pre>
+
+  <div class="callout callout-warn">
+    <span class="callout-icon">⚠️</span>
+    <div><strong>Important Rule:</strong> You MUST declare <code>border-style</code> BEFORE you can use <code>border-color</code>. An element must have a border before you can change its color!</div>
+  </div>
+
+  <div class="exam-q">
+    <div class="exam-q-title">⭐ Exam Questions</div>
+    <p>Q: Explain CSS box model with diagram. Q: What is the difference between margin and padding? Q: What does padding create extra space within/around an element mean? Q: Write CSS for border with all 4 sides different colors.</p>
+  </div>
+</section>
+
+<!-- ════════ CSS FONTS ════════ -->
+<section id="css-fonts">
+  <h1>🔤 CSS – Fonts, Text & Colors</h1>
+
+  <h2>CSS Colors</h2>
+  <p>Colors in CSS can be specified as:</p>
+  <ul>
+    <li><strong>Color name:</strong> <code>color: red;</code></li>
+    <li><strong>Hex value:</strong> <code>color: #FF0000;</code></li>
+    <li><strong>RGB value:</strong> <code>color: rgb(255,0,0);</code></li>
+  </ul>
+
+  <table class="tbl">
+    <tr><th>Color Name</th><th>Hex</th><th>RGB</th></tr>
+    <tr><td>red</td><td>#FF0000</td><td>rgb(255,0,0)</td></tr>
+    <tr><td>blue</td><td>#0000FF</td><td>rgb(0,0,255)</td></tr>
+    <tr><td>green</td><td>#008000</td><td>rgb(0,128,0)</td></tr>
+    <tr><td>yellow</td><td>#FFFF00</td><td>rgb(255,255,0)</td></tr>
+    <tr><td>pink</td><td>#FFC0CB</td><td>rgb(255,192,203)</td></tr>
+  </table>
+
+  <h2>Background Color</h2>
+  <pre><code>body { background-color: lightblue; }
+h1 { background-color: pink; color: red; }
+p { background-color: yellow; }</code></pre>
+
+  <h2>Font Family</h2>
+  <pre><code>p { font-family: "Times New Roman", Times, serif; }
+<span class="cm">/* Start with specific font, end with generic family */</span>
+<span class="cm">/* Generic families: serif, sans-serif, monospace, cursive, fantasy */</span></code></pre>
+
+  <h2>Font Style</h2>
+  <pre><code>p { font-style: normal; }
+p { font-style: italic; }
+p { font-style: oblique; }</code></pre>
+
+  <h2>Font Size</h2>
+  <pre><code>h1 { font-size: 40px; }    <span class="cm">/* Pixels (most common) */</span>
+h2 { font-size: large; }   <span class="cm">/* Absolute: small, medium, large */</span>
+p  { font-size: 150%; }    <span class="cm">/* Relative size */</span></code></pre>
+
+  <h2>Text Properties</h2>
+  <table class="tbl">
+    <tr><th>Property</th><th>Values</th><th>Purpose</th></tr>
+    <tr><td>text-align</td><td>left, right, center, justify</td><td>Horizontal alignment</td></tr>
+    <tr><td>text-indent</td><td>30px, 50px, etc.</td><td>Indent first line of paragraph</td></tr>
+    <tr><td>text-decoration</td><td>underline, overline, line-through, none</td><td>Text decoration</td></tr>
+    <tr><td>text-transform</td><td>uppercase, lowercase, capitalize</td><td>Change case</td></tr>
+    <tr><td>letter-spacing</td><td>.4em, 5px</td><td>Space between letters</td></tr>
+    <tr><td>line-height</td><td>1.5, 20px</td><td>Space between lines</td></tr>
+  </table>
+
+  <pre><code>h1 { text-align: center; }
+h2 { text-align: left; }
+h3 { text-align: right; }
+p  { text-align: justify; }
+
+p { text-indent: 30px; }  <span class="cm">/* indents first line */</span></code></pre>
+
+  <h2>CSS Float Property</h2>
+  <table class="tbl">
+    <tr><th>Value</th><th>Meaning</th></tr>
+    <tr><td>left</td><td>Element floats to the left of its container</td></tr>
+    <tr><td>right</td><td>Element floats to the right of its container</td></tr>
+    <tr><td>none</td><td>Element does not float (default)</td></tr>
+    <tr><td>inherit</td><td>Inherits float value from parent</td></tr>
+  </table>
+
+  <pre><code>img { float: left; }
+<span class="cm">/* Text will wrap around the right side of the image */</span></code></pre>
+
+  <div class="exam-q">
+    <div class="exam-q-title">⭐ Exam Questions</div>
+    <p>Q: What is font-family property? Q: List values of text-align. Q: What does text-indent do? Q: Explain float property with example. Q: How do you specify color in CSS?</p>
+  </div>
+</section>
+
+<!-- ════════ CSS METHODS ════════ -->
+<section id="css-methods">
+  <h1>📄 CSS – Methods of Applying CSS</h1>
+
+  <div class="callout callout-imp">
+    <span class="callout-icon">⭐</span>
+    <div>The 3 ways to apply CSS are asked in <strong>every exam</strong>! Know all 3 with examples!</div>
+  </div>
+
+  <h2>3 Ways to Apply CSS</h2>
+
+  <h3>1. Inline CSS (attribute style)</h3>
+  <p>CSS is written directly in the HTML element using the <code>style</code> attribute.</p>
+
+  <pre><code><span class="tag">&lt;h1</span> <span class="attr">style</span>=<span class="val">"color: blue; font-size: 24px;"</span><span class="tag">&gt;</span>
+  This is inline CSS
+<span class="tag">&lt;/h1&gt;</span>
+
+<span class="tag">&lt;p</span> <span class="attr">style</span>=<span class="val">"background-color: yellow; color: red;"</span><span class="tag">&gt;</span>
+  Styled paragraph
+<span class="tag">&lt;/p&gt;</span></code></pre>
+
+  <div class="callout callout-tip">
+    <span class="callout-icon">💡</span>
+    <div>Inline styles are only for the <strong>individual tag</strong> where specified. Other tags of same type are not affected.</div>
+  </div>
+
+  <h3>2. Internal CSS (Embedded Style Sheet)</h3>
+  <p>CSS is written inside a <code>&lt;style&gt;</code> tag in the <code>&lt;head&gt;</code> section. Applies to all matching elements on that page.</p>
+
+  <pre><code><span class="tag">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html&gt;</span>
+<span class="tag">&lt;head&gt;</span>
+  <span class="tag">&lt;style</span> <span class="attr">type</span>=<span class="val">"text/css"</span><span class="tag">&gt;</span>
+    body {
+      background-color: linen;
+    }
+    h1 {
+      color: maroon;
+      margin-left: 20px;
+    }
+  <span class="tag">&lt;/style&gt;</span>
+<span class="tag">&lt;/head&gt;</span>
+<span class="tag">&lt;body&gt;</span>
+  <span class="tag">&lt;h1&gt;</span>This is a heading<span class="tag">&lt;/h1&gt;</span>
+  <span class="tag">&lt;p&gt;</span>This is a paragraph.<span class="tag">&lt;/p&gt;</span>
+<span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span></code></pre>
+
+  <h3>3. External CSS (Linked Style Sheet)</h3>
+  <p>CSS is written in a <strong>separate .css file</strong>. Linked to the HTML page using <code>&lt;link&gt;</code> tag. Best for large websites.</p>
+
+  <pre><code><span class="cm">&lt;!-- In HTML file (index.html) --&gt;</span>
+<span class="tag">&lt;head&gt;</span>
+  <span class="tag">&lt;link</span>
+    <span class="attr">rel</span>=<span class="val">"stylesheet"</span>
+    <span class="attr">type</span>=<span class="val">"text/css"</span>
+    <span class="attr">href</span>=<span class="val">"style.css"</span>
+    <span class="attr">media</span>=<span class="val">"all"</span>
+  <span class="tag">/&gt;</span>
+<span class="tag">&lt;/head&gt;</span></code></pre>
+
+  <pre><code><span class="cm">/* In CSS file (style.css) */</span>
+h1, h2, h3 {
+  color: #36C;
+  font-weight: normal;
+  letter-spacing: .4em;
+  margin-bottom: 1em;
+  text-transform: lowercase;
+}</code></pre>
+
+  <h2>Comparison Table</h2>
+  <table class="tbl">
+    <tr><th></th><th>Inline</th><th>Internal</th><th>External</th></tr>
+    <tr><td>Location</td><td>In HTML tag</td><td>In &lt;head&gt; &lt;style&gt;</td><td>Separate .css file</td></tr>
+    <tr><td>Scope</td><td>One element only</td><td>Whole page</td><td>Whole website</td></tr>
+    <tr><td>Reusability</td><td>None</td><td>Single page</td><td>Multiple pages</td></tr>
+    <tr><td>Best for</td><td>Quick fixes</td><td>Single page styling</td><td>Large websites</td></tr>
+    <tr><td>Maintenance</td><td>Very difficult</td><td>Moderate</td><td>Very easy</td></tr>
+  </table>
+
+  <div class="exam-q">
+    <div class="exam-q-title">⭐ Exam Questions</div>
+    <p>Q: What are different types of style sheets? How are these different? Q: Explain inline vs internal vs external CSS. Q: Write HTML code to link an external style sheet. Q: Where is internal CSS placed?</p>
+  </div>
+</section>
+
+<!-- ════════ JS INTRO ════════ -->
+<section id="js-intro">
+  <h1>⚡ JavaScript – Introduction</h1>
+
+  <div class="callout callout-info">
+    <span class="callout-icon">💡</span>
+    <div><strong>Definition:</strong> JavaScript is a lightweight scripting language designed to add interactivity to HTML pages. It is interpreted (no compilation needed) and runs directly in the browser.</div>
+  </div>
+
+  <h2>What JavaScript Can Do</h2>
+  <ul>
+    <li>Give HTML designers a <strong>programming tool</strong></li>
+    <li>Put <strong>dynamic text</strong> into an HTML page</li>
+    <li><strong>React to events</strong> (button clicks, mouse movements)</li>
+    <li><strong>Read and write</strong> HTML elements</li>
+    <li><strong>Validate data</strong> in forms before submitting</li>
+    <li><strong>Detect the visitor's browser</strong></li>
+    <li><strong>Create cookies</strong> to store/retrieve information</li>
+  </ul>
+
+  <h2>Java vs JavaScript</h2>
+  <table class="tbl">
+    <tr><th>Java</th><th>JavaScript</th></tr>
+    <tr><td>Developed by Sun Microsystems</td><td>Developed by Netscape</td></tr>
+    <tr><td>Complex, object-oriented language</td><td>Lightweight scripting language</td></tr>
+    <tr><td>Compiled language</td><td>Interpreted language (no compilation)</td></tr>
+    <tr><td>In same category as C/C++</td><td>Simpler syntax</td></tr>
+    <tr><td colspan="2" style="text-align:center;background:#fef3c7"><strong>THESE ARE COMPLETELY DIFFERENT LANGUAGES!</strong></td></tr>
+  </table>
+
+  <h2>How to Add JavaScript to HTML</h2>
+  <pre><code><span class="cm">&lt;!-- Method 1: In &lt;head&gt; section --&gt;</span>
+<span class="tag">&lt;head&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attr">type</span>=<span class="val">"text/javascript"</span><span class="tag">&gt;</span>
+    <span class="kw">function</span> <span class="fn">sayHello</span>() {
+      alert(<span class="str">"Hello World!"</span>);
+    }
+  <span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;/head&gt;</span>
+
+<span class="cm">&lt;!-- Method 2: In &lt;body&gt; section --&gt;</span>
+<span class="tag">&lt;body&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attr">type</span>=<span class="val">"text/javascript"</span><span class="tag">&gt;</span>
+    document.write(<span class="str">"Hello from body!"</span>);
+  <span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;/body&gt;</span></code></pre>
+
+  <div class="callout callout-tip">
+    <span class="callout-icon">🧠</span>
+    <div><strong>Best Practice:</strong> Put functions in <code>&lt;head&gt;</code> so they are loaded before being called. Scripts in &lt;head&gt; are read before the page loads.</div>
+  </div>
+</section>
+
+<!-- ════════ JS VARIABLES ════════ -->
+<section id="js-vars">
+  <h1>📦 JavaScript – Variables & Data Types</h1>
+
+  <h2>What is a Variable?</h2>
+  <p>A variable is a <strong>"container"</strong> for storing information. Think of it as a box with a label.</p>
+
+  <h2>Rules for Variable Names</h2>
+  <ul>
+    <li>Variable names are <strong>case-sensitive</strong> (y and Y are different!)</li>
+    <li>Must begin with a <strong>letter</strong> or <strong>underscore _</strong></li>
+    <li>Cannot use spaces</li>
+    <li>Cannot use reserved words (like if, for, while)</li>
+  </ul>
+
+  <h2>Declaring Variables</h2>
+  <pre><code><span class="kw">var</span> x;            <span class="cm">// declared but empty</span>
+<span class="kw">var</span> carname;
+
+<span class="kw">var</span> x = 5;        <span class="cm">// declared with value</span>
+<span class="kw">var</span> carname = <span class="str">"Scorpio"</span>;
+
+<span class="cm">// Assign without declaring (auto-declared):</span>
+x = 5;
+carname = <span class="str">"Scorpio"</span>;</code></pre>
+
+  <h2>Redeclaring Variables</h2>
+  <pre><code><span class="kw">var</span> x = 5;
+<span class="kw">var</span> x;     <span class="cm">// x still equals 5 – value is NOT lost!</span></code></pre>
+
+  <h2>JavaScript Data Types</h2>
+  <table class="tbl">
+    <tr><th>Type</th><th>Example</th><th>Note</th></tr>
+    <tr><td>Numbers</td><td><code>17, 21, 54.5</code></td><td>No quotes. Can be positive or negative</td></tr>
+    <tr><td>Strings</td><td><code>"Hello"</code>, <code>'World'</code></td><td>Text in quotation marks</td></tr>
+    <tr><td>Boolean</td><td><code>true</code>, <code>false</code></td><td>Only 2 values</td></tr>
+    <tr><td>Null</td><td><code>null</code></td><td>Empty value (not the same as 0!)</td></tr>
+    <tr><td>Undefined</td><td><code>undefined</code></td><td>Variable declared but not assigned</td></tr>
+  </table>
+
+  <div class="callout callout-warn">
+    <span class="callout-icon">⚠️</span>
+    <div><strong>Important:</strong> <code>null</code> ≠ <code>0</code>. null means the ABSENCE of any value. 0 is a real, calculable number.</div>
+  </div>
+
+  <h2>Variable Example Program</h2>
+  <pre><code><span class="tag">&lt;html&gt;</span>
+<span class="tag">&lt;body&gt;</span>
+<span class="tag">&lt;script</span> <span class="attr">type</span>=<span class="val">"text/javascript"</span><span class="tag">&gt;</span>
+
+  <span class="kw">var</span> firstname;
+  firstname = <span class="str">"Welcome"</span>;
+  document.write(firstname);        <span class="cm">// Output: Welcome</span>
+  document.write(<span class="str">"&lt;br /&gt;"</span>);
+  firstname = <span class="str">"XYZ"</span>;
+  document.write(firstname);        <span class="cm">// Output: XYZ</span>
+
+<span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span></code></pre>
+
+  <div class="exam-q">
+    <div class="exam-q-title">⭐ Exam Questions</div>
+    <p>Q: What is a variable in JavaScript? Q: What are rules for JS variable names? Q: List 4 data types in JS. Q: What is null? Q: What happens when you redeclare a variable?</p>
+  </div>
+</section>
+
+<!-- ════════ JS OPERATORS ════════ -->
+<section id="js-operators">
+  <h1>➕ JavaScript – Operators</h1>
+
+  <h2>1. Arithmetic Operators</h2>
+  <p>Given y = 5:</p>
+  <table class="tbl">
+    <tr><th>Operator</th><th>Name</th><th>Example</th><th>Result</th></tr>
+    <tr><td>+</td><td>Addition</td><td>x = y + 2</td><td>x = 7</td></tr>
+    <tr><td>-</td><td>Subtraction</td><td>x = y - 2</td><td>x = 3</td></tr>
+    <tr><td>*</td><td>Multiplication</td><td>x = y * 2</td><td>x = 10</td></tr>
+    <tr><td>/</td><td>Division</td><td>x = y / 2</td><td>x = 2.5</td></tr>
+    <tr><td>%</td><td>Modulus (remainder)</td><td>x = y % 2</td><td>x = 1</td></tr>
+    <tr><td>++</td><td>Increment</td><td>x = ++y</td><td>x = 6</td></tr>
+    <tr><td>--</td><td>Decrement</td><td>x = --y</td><td>x = 4</td></tr>
+  </table>
+
+  <h2>2. Assignment Operators</h2>
+  <p>Given x = 10, y = 5:</p>
+  <table class="tbl">
+    <tr><th>Operator</th><th>Example</th><th>Same As</th><th>Result</th></tr>
+    <tr><td>=</td><td>x = y</td><td>x = y</td><td>x = 5</td></tr>
+    <tr><td>+=</td><td>x += y</td><td>x = x + y</td><td>x = 15</td></tr>
+    <tr><td>-=</td><td>x -= y</td><td>x = x - y</td><td>x = 5</td></tr>
+    <tr><td>*=</td><td>x *= y</td><td>x = x * y</td><td>x = 50</td></tr>
+    <tr><td>/=</td><td>x /= y</td><td>x = x / y</td><td>x = 2</td></tr>
+    <tr><td>%=</td><td>x %= y</td><td>x = x % y</td><td>x = 0</td></tr>
+  </table>
+
+  <h2>3. Comparison Operators</h2>
+  <p>Given x = 5:</p>
+  <table class="tbl">
+    <tr><th>Operator</th><th>Description</th><th>Example</th><th>Result</th></tr>
+    <tr><td>==</td><td>Equal to (value only)</td><td>x == 8</td><td>false</td></tr>
+    <tr><td>===</td><td>Strictly equal (value AND type)</td><td>x === 5</td><td>true</td></tr>
+    <tr><td>!=</td><td>Not equal</td><td>x != 8</td><td>true</td></tr>
+    <tr><td>&gt;</td><td>Greater than</td><td>x &gt; 8</td><td>false</td></tr>
+    <tr><td>&lt;</td><td>Less than</td><td>x &lt; 8</td><td>true</td></tr>
+    <tr><td>&gt;=</td><td>Greater than or equal to</td><td>x &gt;= 8</td><td>false</td></tr>
+    <tr><td>&lt;=</td><td>Less than or equal to</td><td>x &lt;= 8</td><td>true</td></tr>
+  </table>
+
+  <div class="callout callout-warn">
+    <span class="callout-icon">⚠️</span>
+    <div><code>==</code> checks VALUE only. <code>===</code> checks VALUE AND TYPE.<br>
+    Example: <code>5 == "5"</code> is <strong>true</strong> but <code>5 === "5"</code> is <strong>false</strong></div>
+  </div>
+
+  <h2>4. Logical Operators</h2>
+  <p>Given x = 6, y = 3:</p>
+  <table class="tbl">
+    <tr><th>Operator</th><th>Name</th><th>Example</th><th>Result</th></tr>
+    <tr><td>&amp;&amp;</td><td>AND (both must be true)</td><td>(x &lt; 10 &amp;&amp; y &gt; 1)</td><td>true</td></tr>
+    <tr><td>||</td><td>OR (at least one must be true)</td><td>(x == 5 || y == 5)</td><td>false</td></tr>
+    <tr><td>!</td><td>NOT (reverses)</td><td>!(x == y)</td><td>true</td></tr>
+  </table>
+
+  <h2>Conditional (Ternary) Operator</h2>
+  <pre><code>variablename = (condition) ? value1 : value2;
+
+<span class="cm">// Example:</span>
+greeting = (visitor == <span class="str">"PRES"</span>) ? <span class="str">"Dear President "</span> : <span class="str">"Dear "</span>;
+<span class="cm">// If visitor is "PRES" → "Dear President ", else → "Dear "</span></code></pre>
+
+  <h2>The + Operator on Strings</h2>
+  <pre><code><span class="kw">var</span> x = 5 + 5;         <span class="cm">// Result: 10 (number)</span>
+x = <span class="str">"5"</span> + <span class="str">"5"</span>;         <span class="cm">// Result: "55" (string)</span>
+x = 5 + <span class="str">"5"</span>;           <span class="cm">// Result: "55" (string!)</span>
+x = <span class="str">"5"</span> + 5;           <span class="cm">// Result: "55" (string!)</span>
+
+<span class="cm">// RULE: number + string = STRING</span></code></pre>
+
+  <div class="exam-q">
+    <div class="exam-q-title">⭐ Exam Questions</div>
+    <p>Q: Explain all arithmetic operators in JS with examples. Q: What is modulus operator? Q: Difference between == and ===. Q: What is ternary operator? Give example. Q: What is result of 5+"5"?</p>
+  </div>
+</section>
+
+<!-- ════════ JS CONDITIONS ════════ -->
+<section id="js-conditions">
+  <h1>🔀 JavaScript – Conditional Statements</h1>
+
+  <h2>Types of Conditional Statements</h2>
+  <ol>
+    <li><code>if</code> – execute code only if condition is true</li>
+    <li><code>if...else</code> – execute one block if true, another if false</li>
+    <li><code>if...else if...else</code> – check multiple conditions</li>
+    <li><code>switch</code> – select one of many blocks to execute</li>
+  </ol>
+
+  <h2>1. if Statement</h2>
+  <pre><code><span class="kw">if</span> (condition) {
+  <span class="cm">// code if condition is TRUE</span>
+}
+
+<span class="cm">// Example:</span>
+<span class="kw">var</span> d = <span class="kw">new</span> <span class="fn">Date</span>();
+<span class="kw">var</span> time = d.getHours();
+<span class="kw">if</span> (time &lt; 10) {
+  document.write(<span class="str">"&lt;b&gt;Good morning&lt;/b&gt;"</span>);
+}</code></pre>
+
+  <h2>2. if...else Statement</h2>
+  <pre><code><span class="kw">if</span> (condition) {
+  <span class="cm">// code if TRUE</span>
+} <span class="kw">else</span> {
+  <span class="cm">// code if FALSE</span>
+}
+
+<span class="cm">// Example:</span>
+<span class="kw">if</span> (time &lt; 10) {
+  document.write(<span class="str">"Good morning!"</span>);
+} <span class="kw">else</span> {
+  document.write(<span class="str">"Good day!"</span>);
+}</code></pre>
+
+  <h2>3. if...else if...else Statement</h2>
+  <pre><code><span class="kw">if</span> (condition1) {
+  <span class="cm">// if condition1 is true</span>
+} <span class="kw">else if</span> (condition2) {
+  <span class="cm">// if condition2 is true</span>
+} <span class="kw">else</span> {
+  <span class="cm">// if none are true</span>
+}
+
+<span class="cm">// Example:</span>
+<span class="kw">if</span> (time &lt; 10) {
+  document.write(<span class="str">"Good morning"</span>);
+} <span class="kw">else if</span> (time &gt; 10 &amp;&amp; time &lt; 16) {
+  document.write(<span class="str">"Good day"</span>);
+} <span class="kw">else</span> {
+  document.write(<span class="str">"Hello World!"</span>);
+}</code></pre>
+
+  <h2>4. switch Statement</h2>
+  <pre><code><span class="kw">switch</span>(n) {
+  <span class="kw">case</span> 1:
+    <span class="cm">// code block 1</span>
+    <span class="kw">break</span>;
+  <span class="kw">case</span> 2:
+    <span class="cm">// code block 2</span>
+    <span class="kw">break</span>;
+  <span class="kw">default</span>:
+    <span class="cm">// if no case matches</span>
+}
+
+<span class="cm">// Example – Day of week:</span>
+<span class="kw">var</span> d = <span class="kw">new</span> <span class="fn">Date</span>();
+<span class="kw">var</span> theDay = d.getDay(); <span class="cm">// 0=Sun, 1=Mon, ..., 6=Sat</span>
+
+<span class="kw">switch</span>(theDay) {
+  <span class="kw">case</span> 5:
+    document.write(<span class="str">"Finally Friday"</span>);
+    <span class="kw">break</span>;
+  <span class="kw">case</span> 6:
+    document.write(<span class="str">"Super Saturday"</span>);
+    <span class="kw">break</span>;
+  <span class="kw">case</span> 0:
+    document.write(<span class="str">"Sleepy Sunday"</span>);
+    <span class="kw">break</span>;
+  <span class="kw">default</span>:
+    document.write(<span class="str">"Looking forward to weekend!"</span>);
+}</code></pre>
+
+  <div class="callout callout-warn">
+    <span class="callout-icon">⚠️</span>
+    <div>Always use <code>break</code> in switch cases. Without break, execution "falls through" and runs ALL subsequent cases!</div>
+  </div>
+
+  <div class="exam-q">
+    <div class="exam-q-title">⭐ Exam Questions</div>
+    <p>Q: Explain if-else with example. Q: Write JS program to check if number is positive/negative. Q: What is switch statement? Write syntax. Q: What is the purpose of break in switch? Q: Write JS program to display day name based on day number.</p>
+  </div>
+</section>
+
+<!-- ════════ JS LOOPS ════════ -->
+<section id="js-loops">
+  <h1>🔄 JavaScript – Loops</h1>
+
+  <div class="callout callout-imp">
+    <span class="callout-icon">⭐</span>
+    <div>Loops are <strong>VERY IMPORTANT</strong> – all 3 types + break and continue are guaranteed exam topics!</div>
+  </div>
+
+  <h2>1. for Loop</h2>
+  <p>Use when you know in advance how many times to loop.</p>
+  <pre><code><span class="kw">for</span> (initialization; condition; increment) {
+  <span class="cm">// code to execute</span>
+}
+
+<span class="cm">// Example: Print numbers 0 to 10</span>
+<span class="kw">var</span> i;
+<span class="kw">for</span> (i = 0; i &lt;= 10; i++) {
+  document.write(<span class="str">"The number is "</span> + i);
+  document.write(<span class="str">"&lt;br /&gt;"</span>);
+}</code></pre>
+
+  <div class="ans-box">Output: The number is 0, The number is 1, ... The number is 10</div>
+
+  <h2>2. while Loop</h2>
+  <p>Use when condition must be true BEFORE executing code.</p>
+  <pre><code><span class="kw">while</span> (condition) {
+  <span class="cm">// code to execute</span>
+}
+
+<span class="cm">// Example:</span>
+<span class="kw">var</span> i = 0;
+<span class="kw">while</span> (i &lt;= 10) {
+  document.write(<span class="str">"The number is "</span> + i);
+  document.write(<span class="str">"&lt;br /&gt;"</span>);
+  i = i + 1;   <span class="cm">// DON'T FORGET TO INCREMENT!</span>
+}</code></pre>
+
+  <h2>3. do...while Loop</h2>
+  <p>Executes code block <strong>at least ONCE</strong>, THEN checks condition.</p>
+  <pre><code><span class="kw">do</span> {
+  <span class="cm">// code to execute</span>
+} <span class="kw">while</span> (condition);
+
+<span class="cm">// Example:</span>
+<span class="kw">var</span> i = 0;
+<span class="kw">do</span> {
+  document.write(<span class="str">"The number is "</span> + i);
+  document.write(<span class="str">"&lt;br /&gt;"</span>);
+  i = i + 1;
+} <span class="kw">while</span> (i &lt; 0);   <span class="cm">// Condition is false, but loop runs ONCE!</span></code></pre>
+
+  <div class="ans-box">Output: The number is 0 (runs once even though condition i&lt;0 is false)</div>
+
+  <h2>Loop Comparison Table</h2>
+  <table class="tbl">
+    <tr><th></th><th>for</th><th>while</th><th>do...while</th></tr>
+    <tr><td>Use when</td><td>Know count in advance</td><td>Condition based</td><td>Run at least once</td></tr>
+    <tr><td>Condition check</td><td>Before each iteration</td><td>Before each iteration</td><td>After each iteration</td></tr>
+    <tr><td>Minimum runs</td><td>0 times</td><td>0 times</td><td>1 time (always!)</td></tr>
+  </table>
+
+  <h2>break and continue</h2>
+  <pre><code><span class="cm">// BREAK - exits the loop completely</span>
+<span class="kw">for</span> (i = 0; i &lt;= 10; i++) {
+  <span class="kw">if</span> (i == 3) {
+    <span class="kw">break</span>;  <span class="cm">// stops when i=3</span>
+  }
+  document.write(<span class="str">"The number is "</span> + i + <span class="str">"&lt;br&gt;"</span>);
+}
+<span class="cm">// Output: 0, 1, 2 (stops at 3)</span>
+
+<span class="cm">// CONTINUE - skips current iteration</span>
+<span class="kw">for</span> (i = 0; i &lt;= 10; i++) {
+  <span class="kw">if</span> (i == 3) {
+    <span class="kw">continue</span>;  <span class="cm">// skips 3</span>
+  }
+  document.write(<span class="str">"The number is "</span> + i + <span class="str">"&lt;br&gt;"</span>);
+}
+<span class="cm">// Output: 0, 1, 2, 4, 5, 6, 7, 8, 9, 10 (skips 3)</span></code></pre>
+
+  <div class="callout callout-tip">
+    <span class="callout-icon">🧠</span>
+    <div><strong>Memory Trick:</strong> BREAK = "Break out of jail completely". CONTINUE = "Skip this cell, continue with next".</div>
+  </div>
+
+  <div class="exam-q">
+    <div class="exam-q-title">⭐ Exam Questions</div>
+    <p>Q: Explain all types of loops in JS. Q: Difference between while and do-while. Q: Write JS program to print 1 to 10 using for loop. Q: What is break and continue? Q: Write a loop to print even numbers 1–20.</p>
+  </div>
+</section>
+
+<!-- ════════ JS FUNCTIONS ════════ -->
+<section id="js-functions">
+  <h1>🔧 JavaScript – Functions</h1>
+
+  <div class="callout callout-info">
+    <span class="callout-icon">💡</span>
+    <div><strong>Definition:</strong> A function is a self-contained, <strong>reusable block of code</strong> that performs a specific task. It runs when called/invoked.</div>
+  </div>
+
+  <h2>Why Use Functions?</h2>
+  <ul>
+    <li>To keep the browser from executing code when the page loads</li>
+    <li>Reusable – define once, call many times</li>
+    <li>Organized and readable code</li>
+    <li>Can be called from anywhere on the page (or external .js file)</li>
+  </ul>
+
+  <h2>Function Syntax</h2>
+  <pre><code><span class="kw">function</span> <span class="fn">functionname</span>(var1, var2, ..., varX) {
+  <span class="cm">// code to execute</span>
+}
+
+<span class="cm">// Function with NO parameters:</span>
+<span class="kw">function</span> <span class="fn">functionname</span>() {
+  <span class="cm">// code</span>
+}</code></pre>
+
+  <div class="callout callout-warn">
+    <span class="callout-icon">⚠️</span>
+    <div>The word <code>function</code> must be in <strong>lowercase</strong>! Using <code>Function</code> or <code>FUNCTION</code> will cause an error!</div>
+  </div>
+
+  <h2>Function Example</h2>
+  <pre><code><span class="tag">&lt;html&gt;</span>
+<span class="tag">&lt;head&gt;</span>
+<span class="tag">&lt;script</span> <span class="attr">type</span>=<span class="val">"text/javascript"</span><span class="tag">&gt;</span>
+
+  <span class="kw">function</span> <span class="fn">displaymessage</span>() {
+    alert(<span class="str">"Hello World!"</span>);
+  }
+
+<span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;/head&gt;</span>
+<span class="tag">&lt;body&gt;</span>
+  <span class="tag">&lt;form&gt;</span>
+    <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="val">"button"</span>
+           <span class="attr">value</span>=<span class="val">"Click me!"</span>
+           <span class="attr">onclick</span>=<span class="val">"displaymessage()"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;/form&gt;</span>
+<span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span></code></pre>
+
+  <h2>The return Statement</h2>
+  <pre><code><span class="kw">function</span> <span class="fn">prod</span>(a, b) {
+  <span class="kw">var</span> x = a * b;
+  <span class="kw">return</span> x;           <span class="cm">// sends result back to caller</span>
+}
+
+<span class="cm">// Calling the function:</span>
+<span class="kw">var</span> product = <span class="fn">prod</span>(2, 3);   <span class="cm">// product = 6</span></code></pre>
+
+  <h2>Local vs Global Variables</h2>
+  <table class="tbl">
+    <tr><th>Local Variable</th><th>Global Variable</th></tr>
+    <tr><td>Declared INSIDE a function</td><td>Declared OUTSIDE a function</td></tr>
+    <tr><td>Accessible only within that function</td><td>Accessible from anywhere on the page</td></tr>
+    <tr><td>Destroyed when function exits</td><td>Lives until page is closed</td></tr>
+  </table>
+
+  <div class="exam-q">
+    <div class="exam-q-title">⭐ Exam Questions</div>
+    <p>Q: What is a function in JS? Q: Write syntax of function definition. Q: What is return statement? Q: Difference between local and global variables. Q: Write a function to find product of 2 numbers.</p>
+  </div>
+</section>
+
+<!-- ════════ JS EVENTS ════════ -->
+<section id="js-events">
+  <h1>🖱️ JavaScript – Events & Event Handlers</h1>
+
+  <div class="callout callout-info">
+    <span class="callout-icon">💡</span>
+    <div><strong>Definition:</strong> An Event is something that happens (user action or browser action). An Event Handler is JavaScript code that responds to that event.</div>
+  </div>
+
+  <h2>Common Event Handlers</h2>
+  <table class="tbl">
+    <tr><th>Event Handler</th><th>When it Fires</th></tr>
+    <tr><td>onClick</td><td>User clicks on a link or form element</td></tr>
+    <tr><td>onMouseOver</td><td>User moves pointer over a hypertext link</td></tr>
+    <tr><td>onMouseOut</td><td>User moves pointer off of a link</td></tr>
+    <tr><td>onLoad</td><td>Once a page is fully loaded</td></tr>
+    <tr><td>onUnload</td><td>User leaves a page</td></tr>
+    <tr><td>onChange</td><td>Value of a form field changes</td></tr>
+    <tr><td>onFocus</td><td>Element gets input focus</td></tr>
+    <tr><td>onBlur</td><td>Element loses input focus</td></tr>
+    <tr><td>onSubmit</td><td>Form is submitted</td></tr>
+    <tr><td>onReset</td><td>User clicks Reset button</td></tr>
+    <tr><td>onSelect</td><td>User selects form element's field</td></tr>
+    <tr><td>onError</td><td>Error during loading of document/image</td></tr>
+    <tr><td>onAbort</td><td>User cancels loading of an image</td></tr>
+  </table>
+
+  <h2>3 Methods of Using Event Handlers</h2>
+
+  <h3>Method 1 – Link Events</h3>
+  <pre><code><span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="val">"#"</span> <span class="attr">onClick</span>=<span class="val">"alert('You clicked!')"</span><span class="tag">&gt;</span>Click me<span class="tag">&lt;/a&gt;</span>
+
+<span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="val">"javascript:void('')"</span>
+   <span class="attr">onMouseOver</span>=<span class="val">"alert('Hee hee!')"</span><span class="tag">&gt;</span>
+  Mouse over me!
+<span class="tag">&lt;/a&gt;</span></code></pre>
+
+  <h3>Method 2 – Form Actions</h3>
+  <pre><code><span class="tag">&lt;form&gt;</span>
+  <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="val">"button"</span>
+         <span class="attr">value</span>=<span class="val">"Click"</span>
+         <span class="attr">onClick</span>=<span class="val">"doSomething()"</span><span class="tag">&gt;</span>
+
+  <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="val">"text"</span>
+         <span class="attr">onChange</span>=<span class="val">"checkField(this)"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/form&gt;</span></code></pre>
+
+  <h3>Method 3 – BODY onLoad & onUnload</h3>
+  <pre><code><span class="tag">&lt;body</span> <span class="attr">onLoad</span>=<span class="val">"loaded = true;"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="val">"button"</span>
+         <span class="attr">onClick</span>=<span class="val">"if (loaded) doit();"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/body&gt;</span></code></pre>
+
+  <h2>Which Events Work with Which Elements</h2>
+  <table class="tbl">
+    <tr><th>Object</th><th>Available Events</th></tr>
+    <tr><td>Button</td><td>onClick, onMouseOver</td></tr>
+    <tr><td>Checkbox</td><td>onClick</td></tr>
+    <tr><td>Document</td><td>onLoad, onUnload, onError</td></tr>
+    <tr><td>Form</td><td>onSubmit, onReset</td></tr>
+    <tr><td>Hypertext link</td><td>onClick, onMouseOver, onMouseOut</td></tr>
+    <tr><td>Text element</td><td>onBlur, onChange, onFocus, onSelect</td></tr>
+    <tr><td>Window</td><td>onLoad, onUnload, onBlur, onFocus</td></tr>
+  </table>
+
+  <div class="exam-q">
+    <div class="exam-q-title">⭐ Exam Questions</div>
+    <p>Q: What is an event in JavaScript? Q: List 5 event handlers. Q: Explain onMouseOver event. Q: Write JS code using onClick. Q: What is difference between event and event handler?</p>
+  </div>
+</section>
+
+<!-- ════════ JS ARRAYS ════════ -->
+<section id="js-arrays">
+  <h1>📋 JavaScript – Arrays</h1>
+
+  <div class="callout callout-info">
+    <span class="callout-icon">💡</span>
+    <div><strong>Definition:</strong> An array is an object used to store multiple values in a single variable (like a database-like structure). Think of it as a column of data in a spreadsheet.</div>
+  </div>
+
+  <h2>Key Points About Arrays</h2>
+  <ul>
+    <li>Array index starts from <strong>0</strong> (not 1!)</li>
+    <li>Elements can be any type: strings, numbers, booleans</li>
+    <li>Name of array object is capitalized: <code>Array</code></li>
+    <li>Access elements using index in brackets: <code>myCar[0]</code></li>
+  </ul>
+
+  <h2>Creating Arrays</h2>
+  <pre><code><span class="cm">// Method 1: Empty array then assign</span>
+<span class="kw">var</span> myCars = <span class="kw">new</span> <span class="fn">Array</span>();
+myCars[0] = <span class="str">"Saab"</span>;
+myCars[1] = <span class="str">"Volvo"</span>;
+myCars[2] = <span class="str">"BMW"</span>;
+
+<span class="cm">// Method 2: Pre-size then assign</span>
+<span class="kw">var</span> myCars = <span class="kw">new</span> <span class="fn">Array</span>(3);
+myCars[0] = <span class="str">"Saab"</span>;
+
+<span class="cm">// Method 3: Initialize directly (preferred)</span>
+<span class="kw">var</span> myCars = <span class="kw">new</span> <span class="fn">Array</span>(<span class="str">"Saab"</span>, <span class="str">"Volvo"</span>, <span class="str">"BMW"</span>);</code></pre>
+
+  <h2>Accessing Array Elements</h2>
+  <pre><code>document.write(myCars[0]);  <span class="cm">// Output: Saab</span>
+document.write(myCars[2]);  <span class="cm">// Output: BMW</span>
+
+<span class="cm">// Modifying:</span>
+myCars[0] = <span class="str">"Opel"</span>;
+document.write(myCars[0]);  <span class="cm">// Output: Opel</span></code></pre>
+
+  <h2>Array Length Property</h2>
+  <pre><code><span class="kw">var</span> myArray = <span class="kw">new</span> <span class="fn">Array</span>(<span class="str">"Chev"</span>, <span class="str">"Ford"</span>, <span class="str">"Buick"</span>);
+document.write(myArray.length);  <span class="cm">// Output: 3</span>
+
+<span class="cm">// Using length in a loop:</span>
+<span class="kw">for</span> (<span class="kw">var</span> i = 0; i &lt; myArray.length; i++) {
+  document.write(myArray[i] + <span class="str">"&lt;br&gt;"</span>);
+}</code></pre>
+
+  <h2>Multidimensional Arrays</h2>
+  <pre><code><span class="kw">var</span> emailList = <span class="kw">new</span> <span class="fn">Array</span>();
+
+emailList[0] = <span class="kw">new</span> <span class="fn">Array</span>(<span class="str">"President"</span>, <span class="str">"Paul Smith"</span>, <span class="str">"psmith@domain.com"</span>);
+emailList[1] = <span class="kw">new</span> <span class="fn">Array</span>(<span class="str">"Vice President"</span>, <span class="str">"Laura Stevens"</span>, <span class="str">"lstevens@domain.com"</span>);
+emailList[2] = <span class="kw">new</span> <span class="fn">Array</span>(<span class="str">"General Manager"</span>, <span class="str">"Mary Larsen"</span>, <span class="str">"mlarsen@domain.com"</span>);
+
+<span class="cm">// Access VP's email:</span>
+<span class="kw">var</span> vpEmail = emailList[1][2];  <span class="cm">// lstevens@domain.com</span>
+<span class="cm">// [1] = 2nd row (VP), [2] = 3rd column (email)</span></code></pre>
+
+  <h2>Array Properties Summary</h2>
+  <table class="tbl">
+    <tr><th>Property</th><th>Purpose</th></tr>
+    <tr><td>length</td><td>Returns total number of elements</td></tr>
+    <tr><td>constructor</td><td>Returns function that created the array</td></tr>
+    <tr><td>prototype</td><td>Used to add properties or methods</td></tr>
+  </table>
+
+  <div class="exam-q">
+    <div class="exam-q-title">⭐ Exam Questions</div>
+    <p>Q: What is an array in JavaScript? Q: How do you create and access arrays? Q: What is the length property? Q: Explain multidimensional array with example. Q: Write a program to display array elements using a loop.</p>
+  </div>
+</section>
+
+<!-- ════════ JS OBJECTS ════════ -->
+<section id="js-objects">
+  <h1>🏗️ JavaScript – Built-in Objects</h1>
+
+  <h2>Math Object</h2>
+  <pre><code><span class="cm">// Math is NOT a constructor – use directly</span>
+<span class="kw">var</span> pi = Math.PI;           <span class="cm">// 3.14159...</span>
+<span class="kw">var</span> sq = Math.sqrt(16);     <span class="cm">// 4</span>
+<span class="kw">var</span> rounded = Math.round(4.7);  <span class="cm">// 5</span>
+<span class="kw">var</span> rand = Math.random();   <span class="cm">// 0 to 0.99...</span>
+<span class="kw">var</span> floored = Math.floor(Math.random() * 11);  <span class="cm">// 0 to 10</span></code></pre>
+
+  <h2>Math Constants</h2>
+  <table class="tbl">
+    <tr><th>Constant</th><th>Meaning</th></tr>
+    <tr><td>Math.PI</td><td>π = 3.14159...</td></tr>
+    <tr><td>Math.E</td><td>Euler's number</td></tr>
+    <tr><td>Math.SQRT2</td><td>Square root of 2</td></tr>
+    <tr><td>Math.LN2</td><td>Natural log of 2</td></tr>
+  </table>
+
+  <h2>Date Object</h2>
+  <pre><code><span class="kw">var</span> myDate = <span class="kw">new</span> <span class="fn">Date</span>();  <span class="cm">// Current date/time</span>
+
+myDate.setFullYear(2010, 0, 14);  <span class="cm">// Set to Jan 14, 2010</span>
+myDate.setDate(myDate.getDate() + 5);  <span class="cm">// 5 days in future</span>
+
+<span class="cm">// Useful methods:</span>
+d.getDay()     <span class="cm">// Day of week (0=Sun)</span>
+d.getDate()    <span class="cm">// Day of month</span>
+d.getMonth()   <span class="cm">// Month (0-11)</span>
+d.getFullYear()<span class="cm">// Year</span>
+d.getHours()   <span class="cm">// Hours (0-23)</span></code></pre>
+
+  <h2>String Object</h2>
+  <pre><code><span class="kw">var</span> txt = <span class="str">"Hello world!"</span>;
+
+txt.length;          <span class="cm">// 12</span>
+txt.toUpperCase();   <span class="cm">// "HELLO WORLD!"</span>
+txt.toLowerCase();   <span class="cm">// "hello world!"</span>
+txt.indexOf(<span class="str">"o"</span>);    <span class="cm">// 4 (first occurrence)</span>
+txt.substring(0,5);  <span class="cm">// "Hello"</span>
+txt.charAt(0);       <span class="cm">// "H"</span></code></pre>
+
+  <h2>Window Object Methods</h2>
+  <table class="tbl">
+    <tr><th>Method</th><th>Purpose</th></tr>
+    <tr><td>alert("msg")</td><td>Shows alert box with OK button</td></tr>
+    <tr><td>confirm("msg")</td><td>Shows dialog with OK and Cancel</td></tr>
+    <tr><td>prompt("msg")</td><td>Shows dialog asking user for input</td></tr>
+    <tr><td>open()</td><td>Opens new browser window</td></tr>
+    <tr><td>close()</td><td>Closes current window</td></tr>
+    <tr><td>setTimeout()</td><td>Executes function after delay (ms)</td></tr>
+    <tr><td>setInterval()</td><td>Executes function at intervals</td></tr>
+  </table>
+
+  <h2>Document Object Methods</h2>
+  <table class="tbl">
+    <tr><th>Method</th><th>Purpose</th></tr>
+    <tr><td>getElementById()</td><td>Returns element with specified id</td></tr>
+    <tr><td>getElementsByName()</td><td>Returns elements with specified name</td></tr>
+    <tr><td>getElementsByTagName()</td><td>Returns elements with specified tag</td></tr>
+    <tr><td>write()</td><td>Writes HTML to document</td></tr>
+    <tr><td>writeln()</td><td>Same as write() + newline</td></tr>
+  </table>
+
+  <div class="exam-q">
+    <div class="exam-q-title">⭐ Exam Questions</div>
+    <p>Q: Explain Math object with methods. Q: Write JS code to generate random number. Q: What is Date object? Q: List methods of document object. Q: What is the difference between alert(), confirm(), and prompt()?</p>
+  </div>
+</section>
+
+<!-- ════════ QUESTION BANK ════════ -->
+<section id="qbank">
+  <h1>📝 Complete Question Bank</h1>
+
+  <h2>2-Mark Questions – Quick Answers</h2>
+
+  <div class="q-item">
+    <div class="q-head" onclick="toggleQ(this)">
+      <span class="q-marks">2M</span>
+      <span>What is HTML? What does it stand for?</span>
+    </div>
+    <div class="q-body">
+      HTML stands for HyperText Markup Language. It is the standard markup language used to create web pages. It uses tags to structure and present content in a web browser.
+    </div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-head" onclick="toggleQ(this)">
+      <span class="q-marks">2M</span>
+      <span>What is an empty tag? Give 2 examples.</span>
+    </div>
+    <div class="q-body">
+      An empty tag (also called a void element) is an HTML tag that has no closing tag and does not contain any content between opening and closing tags. Examples: &lt;br&gt; (line break), &lt;hr&gt; (horizontal rule), &lt;img&gt; (image).
+    </div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-head" onclick="toggleQ(this)">
+      <span class="q-marks">2M</span>
+      <span>What is CSS? What does it stand for?</span>
+    </div>
+    <div class="q-body">
+      CSS stands for Cascading Style Sheets. It is a style sheet language used to control the look and formatting (presentation) of a document written in HTML. It allows us to add styles like fonts, colors, and spacing to web pages.
+    </div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-head" onclick="toggleQ(this)">
+      <span class="q-marks">2M</span>
+      <span>What is JavaScript? Is it same as Java?</span>
+    </div>
+    <div class="q-body">
+      JavaScript is a lightweight scripting language designed to add interactivity to HTML pages. It is an interpreted language. No, JavaScript and Java are completely different languages in both concept and design. Java is a powerful, complex programming language, while JavaScript is a simple scripting language.
+    </div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-head" onclick="toggleQ(this)">
+      <span class="q-marks">2M</span>
+      <span>What is HREF? What does it stand for?</span>
+    </div>
+    <div class="q-body">
+      HREF stands for HyperText REFerence. It is an attribute of the &lt;a&gt; (anchor) tag that specifies the URL or path of the linked page. It is mandatory for creating hyperlinks.
+    </div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-head" onclick="toggleQ(this)">
+      <span class="q-marks">2M</span>
+      <span>What is the difference between margin and padding?</span>
+    </div>
+    <div class="q-body">
+      Padding is the space between the element's content and its border (inside the element). Margin is the space outside the border, creating distance between elements. Example: padding:35px adds space inside; margin:35px adds space outside.
+    </div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-head" onclick="toggleQ(this)">
+      <span class="q-marks">2M</span>
+      <span>What is the difference between == and === in JavaScript?</span>
+    </div>
+    <div class="q-body">
+      == (equal to) compares only the VALUE of two variables. === (strictly equal to) compares both the VALUE and the TYPE. Example: 5 == "5" is true (same value), but 5 === "5" is false (different types: number vs string).
+    </div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-head" onclick="toggleQ(this)">
+      <span class="q-marks">2M</span>
+      <span>What is null in JavaScript?</span>
+    </div>
+    <div class="q-body">
+      Null is an empty value in JavaScript. It represents the absence of any value. Null is NOT the same as 0: 0 is a real, calculable number, whereas null means "nothing" or "no value assigned."
+    </div>
+  </div>
+
+  <hr class="divider">
+  <h2>5-Mark Questions – Detailed Answers</h2>
+
+  <div class="q-item">
+    <div class="q-head" onclick="toggleQ(this)">
+      <span class="q-marks">5M</span>
+      <span>Explain the structure of an HTML document with example.</span>
+    </div>
+    <div class="q-body">
+      <p>An HTML document has a standard structure with the following parts:</p>
+      <ol>
+        <li><strong>&lt;!DOCTYPE html&gt;</strong> – Declaration that identifies the document as HTML5</li>
+        <li><strong>&lt;html&gt;</strong> – Root element that wraps all content</li>
+        <li><strong>&lt;head&gt;</strong> – Contains meta information: title, CSS links, JS links (not visible)</li>
+        <li><strong>&lt;title&gt;</strong> – Text shown on browser tab</li>
+        <li><strong>&lt;body&gt;</strong> – All visible content: headings, paragraphs, forms, images</li>
+      </ol>
+      <pre style="font-size:12px;">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;My First Page&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Welcome to HTML&lt;/h1&gt;
+    &lt;p&gt;This is my first web page.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
+    </div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-head" onclick="toggleQ(this)">
+      <span class="q-marks">5M</span>
+      <span>Explain the three types of CSS with examples.</span>
+    </div>
+    <div class="q-body">
+      <p><strong>1. Inline CSS</strong> – Applied directly in the HTML element using style attribute. Applies only to that one element.</p>
+      <pre style="font-size:12px;">&lt;h1 style="color:blue; font-size:20px;"&gt;Inline CSS&lt;/h1&gt;</pre>
+      <p><strong>2. Internal CSS</strong> – Written inside &lt;style&gt; tag in &lt;head&gt; section. Applies to all matching elements on that page.</p>
+      <pre style="font-size:12px;">&lt;head&gt;&lt;style type="text/css"&gt;
+  h1 { color: red; }
+&lt;/style&gt;&lt;/head&gt;</pre>
+      <p><strong>3. External CSS</strong> – Written in a separate .css file. Linked to HTML using &lt;link&gt; tag. Best for large websites as changes apply sitewide.</p>
+      <pre style="font-size:12px;">&lt;link rel="stylesheet" type="text/css" href="style.css"&gt;</pre>
+    </div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-head" onclick="toggleQ(this)">
+      <span class="q-marks">5M</span>
+      <span>Explain all three types of loops in JavaScript with examples.</span>
+    </div>
+    <div class="q-body">
+      <p><strong>1. for loop</strong> – Used when we know the number of iterations in advance.</p>
+      <pre style="font-size:12px;">for (i=0; i&lt;=5; i++) { document.write(i + "&lt;br&gt;"); }</pre>
+      <p><strong>2. while loop</strong> – Checks condition BEFORE executing. May not execute at all.</p>
+      <pre style="font-size:12px;">var i=0; while (i&lt;=5) { document.write(i); i++; }</pre>
+      <p><strong>3. do...while loop</strong> – Executes code ONCE first, then checks condition. Always runs at least once.</p>
+      <pre style="font-size:12px;">var i=0; do { document.write(i); i++; } while (i&lt;5);</pre>
+    </div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-head" onclick="toggleQ(this)">
+      <span class="q-marks">5M</span>
+      <span>Explain CSS selectors: Type, ID, and Class with examples.</span>
+    </div>
+    <div class="q-body">
+      <p><strong>1. Type Selector</strong> – Selects all elements of a given tag. No special symbol needed.</p>
+      <pre style="font-size:12px;">p { color: red; text-align: center; }</pre>
+      <p><strong>2. ID Selector</strong> – Uses # symbol. Selects one unique element with that id.</p>
+      <pre style="font-size:12px;">#para1 { color: red; }   /* HTML: &lt;p id="para1"&gt; */</pre>
+      <p><strong>3. Class Selector</strong> – Uses . (dot) symbol. Multiple elements can share a class.</p>
+      <pre style="font-size:12px;">.center { text-align:center; }  /* HTML: &lt;p class="center"&gt; */</pre>
+    </div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-head" onclick="toggleQ(this)">
+      <span class="q-marks">5M</span>
+      <span>Explain all types of HTML lists with examples.</span>
+    </div>
+    <div class="q-body">
+      <p>There are 3 types of lists in HTML:</p>
+      <p><strong>1. Unordered List (UL)</strong> – Items with bullets (disc, circle, square)</p>
+      <pre style="font-size:12px;">&lt;ul type="disc"&gt;
+  &lt;li&gt;HTML&lt;/li&gt;
+  &lt;li&gt;CSS&lt;/li&gt;
+&lt;/ul&gt;</pre>
+      <p><strong>2. Ordered List (OL)</strong> – Items numbered/lettered (1,a,A,i,I)</p>
+      <pre style="font-size:12px;">&lt;ol type="1"&gt;
+  &lt;li&gt;First&lt;/li&gt;
+  &lt;li&gt;Second&lt;/li&gt;
+&lt;/ol&gt;</pre>
+      <p><strong>3. Definition List (DL)</strong> – Term (&lt;dt&gt;) and its definition (&lt;dd&gt;)</p>
+      <pre style="font-size:12px;">&lt;dl&gt;
+  &lt;dt&gt;HTML&lt;/dt&gt;
+  &lt;dd&gt;HyperText Markup Language&lt;/dd&gt;
+&lt;/dl&gt;</pre>
+    </div>
+  </div>
+
+  <hr class="divider">
+  <h2>10-Mark Questions – Long Answers</h2>
+
+  <div class="q-item">
+    <div class="q-head" onclick="toggleQ(this)">
+      <span class="q-marks">10M</span>
+      <span>Write HTML code to create a complete registration form.</span>
+    </div>
+    <div class="q-body">
+      Include: Name (text), Password, Gender (radio), Hobbies (checkbox), City (dropdown), Message (textarea), Submit & Reset buttons. See the Forms section for the complete code.
+    </div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-head" onclick="toggleQ(this)">
+      <span class="q-marks">10M</span>
+      <span>Explain all JavaScript operators with examples.</span>
+    </div>
+    <div class="q-body">
+      Cover: Arithmetic (+ - * / % ++ --), Assignment (= += -= *= /= %=), Comparison (== === != &gt; &lt; &gt;= &lt;=), Logical (&amp;&amp; || !), and Conditional (ternary ? :). See the Operators section for full tables and examples.
+    </div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-head" onclick="toggleQ(this)">
+      <span class="q-marks">10M</span>
+      <span>Explain CSS Box Model and all its properties with examples.</span>
+    </div>
+    <div class="q-body">
+      Explain: Content → Padding → Border → Margin (inside out). Include margin shorthand (TOP RIGHT BOTTOM LEFT), border-style values (solid, dotted, dashed, double), border-color, border-width. Draw the box model diagram. See Box Model section for all code examples.
+    </div>
+  </div>
+</section>
+
+<!-- ════════ PREDICTED QUESTIONS ════════ -->
+<section id="predicted">
+  <h1>🎯 Predicted Exam Questions</h1>
+
+  <div class="callout callout-warn">
+    <span class="callout-icon">🔥</span>
+    <div>These questions are predicted based on your study materials and standard BCA exam patterns. Study these thoroughly!</div>
+  </div>
+
+  <h2>⭐⭐⭐ Very Likely (Must Prepare)</h2>
+  <div class="card">
+    <ol>
+      <li>Write the complete structure of an HTML document with explanation. <span class="badge badge-red">10M</span></li>
+      <li>Create an HTML registration form with all input types. <span class="badge badge-red">10M</span></li>
+      <li>Explain all three types of CSS (Inline, Internal, External) with examples. <span class="badge badge-red">10M</span></li>
+      <li>Explain CSS selectors (Type, ID, Class) with examples. <span class="badge badge-red">10M</span></li>
+      <li>Explain all types of loops in JavaScript with examples and programs. <span class="badge badge-red">10M</span></li>
+      <li>Explain conditional statements in JavaScript (if, if-else, switch). <span class="badge badge-red">10M</span></li>
+      <li>Explain JavaScript functions with syntax and example. <span class="badge badge-yellow">5M</span></li>
+      <li>Explain arrays in JavaScript. How to create and access arrays? <span class="badge badge-yellow">5M</span></li>
+    </ol>
+  </div>
+
+  <h2>⭐⭐ Likely (Should Prepare)</h2>
+  <div class="card">
+    <ol>
+      <li>What are the advantages of CSS? Explain with points. <span class="badge badge-yellow">5M</span></li>
+      <li>Explain CSS Box Model (margin, padding, border). Draw diagram. <span class="badge badge-yellow">5M</span></li>
+      <li>Explain events and event handlers in JavaScript. List 5 event handlers. <span class="badge badge-yellow">5M</span></li>
+      <li>Create HTML table with colspan and rowspan. <span class="badge badge-yellow">5M</span></li>
+      <li>Explain all types of lists in HTML with examples. <span class="badge badge-yellow">5M</span></li>
+      <li>Explain font properties in CSS (font-family, font-size, font-style). <span class="badge badge-yellow">5M</span></li>
+      <li>Write JS program to find largest of 3 numbers. <span class="badge badge-yellow">5M</span></li>
+      <li>Explain anchor tag. What is internal vs external linking? <span class="badge badge-yellow">5M</span></li>
+    </ol>
+  </div>
+
+  <h2>⭐ Optional (Prepare if Time Allows)</h2>
+  <div class="card">
+    <ol>
+      <li>Explain float property in CSS with example. <span class="badge badge-green">2-5M</span></li>
+      <li>Explain Math object methods in JavaScript. <span class="badge badge-green">5M</span></li>
+      <li>Explain Date object in JavaScript. <span class="badge badge-green">5M</span></li>
+      <li>Explain audio and video tags in HTML. <span class="badge badge-green">2-5M</span></li>
+      <li>What is multidimensional array? Give example. <span class="badge badge-green">5M</span></li>
+    </ol>
+  </div>
+
+  <h2>🔥 Top 5 Programs to Practice</h2>
+  <div class="card">
+    <ol>
+      <li><strong>Print numbers 1–10 using for loop</strong></li>
+      <li><strong>Check if number is positive, negative, or zero (if-else)</strong></li>
+      <li><strong>Function to find product of two numbers</strong></li>
+      <li><strong>Switch statement for day names</strong></li>
+      <li><strong>Create and display array elements using loop</strong></li>
+    </ol>
+  </div>
+
+  <h2>MCQ Predicted Answers</h2>
+  <table class="tbl">
+    <tr><th>Question</th><th>Answer</th></tr>
+    <tr><td>Which tag is used to insert a line break?</td><td>&lt;br&gt;</td></tr>
+    <tr><td>HREF stands for?</td><td>HyperText REFerence</td></tr>
+    <tr><td>Which tag starts an HTML table?</td><td>&lt;table&gt;</td></tr>
+    <tr><td>To insert image, we use?</td><td>&lt;img&gt;</td></tr>
+    <tr><td>CSS stands for?</td><td>Cascading Style Sheets</td></tr>
+    <tr><td>Which HTML tag defines internal CSS?</td><td>&lt;style&gt;</td></tr>
+    <tr><td>Which HTML attribute is used for inline styles?</td><td>style</td></tr>
+    <tr><td>Correct CSS syntax?</td><td>body {color: black}</td></tr>
+    <tr><td>How to insert comment in CSS?</td><td>/* comment */</td></tr>
+    <tr><td>Which property changes background color?</td><td>background-color:</td></tr>
+    <tr><td>Which property controls text size?</td><td>font-size</td></tr>
+    <tr><td>Array index starts from?</td><td>0</td></tr>
+    <tr><td>Which loop always executes at least once?</td><td>do...while</td></tr>
+    <tr><td>Which is NOT an input attribute?</td><td>select</td></tr>
+    <tr><td>&lt;TR&gt; creates a?</td><td>row</td></tr>
+  </table>
+</section>
+
+<!-- ════════ CHEAT SHEET ════════ -->
+<section id="cheatsheet">
+  <h1>⚡ Quick Cheat Sheet</h1>
+
+  <h2>HTML Tags Cheat Sheet</h2>
+  <div class="card-grid">
+    <div class="cheat-block">
+      <h4>Structure</h4>
+      <code>&lt;!DOCTYPE html&gt;</code><br>
+      <code>&lt;html&gt; &lt;head&gt; &lt;body&gt;</code><br>
+      <code>&lt;title&gt; &lt;meta&gt;</code>
+    </div>
+    <div class="cheat-block">
+      <h4>Text</h4>
+      <code>&lt;h1&gt;–&lt;h6&gt;</code> headings<br>
+      <code>&lt;p&gt;</code> paragraph<br>
+      <code>&lt;br&gt;</code> line break<br>
+      <code>&lt;hr&gt;</code> horizontal line
+    </div>
+    <div class="cheat-block">
+      <h4>Formatting</h4>
+      <code>&lt;b&gt; &lt;strong&gt;</code> bold<br>
+      <code>&lt;i&gt; &lt;em&gt;</code> italic<br>
+      <code>&lt;u&gt;</code> underline<br>
+      <code>&lt;sup&gt; &lt;sub&gt;</code>
+    </div>
+    <div class="cheat-block">
+      <h4>Lists</h4>
+      <code>&lt;ul&gt; &lt;ol&gt; &lt;li&gt;</code><br>
+      <code>&lt;dl&gt; &lt;dt&gt; &lt;dd&gt;</code>
+    </div>
+    <div class="cheat-block">
+      <h4>Tables</h4>
+      <code>&lt;table&gt; &lt;tr&gt;</code><br>
+      <code>&lt;th&gt; &lt;td&gt;</code><br>
+      <code>colspan rowspan</code><br>
+      <code>border cellpadding</code>
+    </div>
+    <div class="cheat-block">
+      <h4>Forms</h4>
+      <code>&lt;form action method&gt;</code><br>
+      <code>input: text password</code><br>
+      <code>radio checkbox submit</code><br>
+      <code>&lt;textarea&gt; &lt;select&gt;</code>
+    </div>
+    <div class="cheat-block">
+      <h4>Links & Media</h4>
+      <code>&lt;a href target&gt;</code><br>
+      <code>&lt;img src alt&gt;</code><br>
+      <code>&lt;audio controls&gt;</code><br>
+      <code>&lt;video controls&gt;</code>
+    </div>
+  </div>
+
+  <h2>CSS Cheat Sheet</h2>
+  <div class="card-grid">
+    <div class="cheat-block">
+      <h4>Selectors</h4>
+      <code>p { }</code> type<br>
+      <code>#id { }</code> ID<br>
+      <code>.class { }</code> class<br>
+      <code>h1,h2 { }</code> grouped
+    </div>
+    <div class="cheat-block">
+      <h4>Colors</h4>
+      <code>color: red;</code><br>
+      <code>color: #FF0000;</code><br>
+      <code>color: rgb(255,0,0);</code><br>
+      <code>background-color: blue;</code>
+    </div>
+    <div class="cheat-block">
+      <h4>Fonts</h4>
+      <code>font-family: Arial;</code><br>
+      <code>font-size: 16px;</code><br>
+      <code>font-style: italic;</code><br>
+      <code>font-weight: bold;</code>
+    </div>
+    <div class="cheat-block">
+      <h4>Text</h4>
+      <code>text-align: center;</code><br>
+      <code>text-indent: 30px;</code><br>
+      <code>text-decoration: underline;</code><br>
+      <code>letter-spacing: .4em;</code>
+    </div>
+    <div class="cheat-block">
+      <h4>Box Model</h4>
+      <code>margin: 10px 5px 15px 20px;</code><br>
+      <code>padding: 35px;</code><br>
+      <code>border-style: solid;</code><br>
+      <code>border-color: red;</code>
+    </div>
+    <div class="cheat-block">
+      <h4>Applying CSS</h4>
+      style attr = Inline<br>
+      &lt;style&gt; in &lt;head&gt; = Internal<br>
+      .css file + &lt;link&gt; = External
+    </div>
+  </div>
+
+  <h2>JavaScript Cheat Sheet</h2>
+  <div class="card-grid">
+    <div class="cheat-block">
+      <h4>Variables</h4>
+      <code>var x = 5;</code><br>
+      <code>var name = "Numan";</code><br>
+      <code>var flag = true;</code><br>
+      <code>var nothing = null;</code>
+    </div>
+    <div class="cheat-block">
+      <h4>Conditions</h4>
+      <code>if (x &gt; 0) { }</code><br>
+      <code>if (x) { } else { }</code><br>
+      <code>switch(n) { case 1: break; }</code>
+    </div>
+    <div class="cheat-block">
+      <h4>Loops</h4>
+      <code>for (i=0; i&lt;10; i++) { }</code><br>
+      <code>while (i &lt; 10) { }</code><br>
+      <code>do { } while (i &lt; 10);</code>
+    </div>
+    <div class="cheat-block">
+      <h4>Functions</h4>
+      <code>function fn(a,b) { }</code><br>
+      <code>return x;</code><br>
+      <code>fn(2, 3);</code>
+    </div>
+    <div class="cheat-block">
+      <h4>Arrays</h4>
+      <code>var a = new Array();</code><br>
+      <code>a[0] = "first";</code><br>
+      <code>a.length</code><br>
+      <code>a[1][2]</code> multi-dim
+    </div>
+    <div class="cheat-block">
+      <h4>Events</h4>
+      onClick onLoad<br>
+      onMouseOver onBlur<br>
+      onChange onSubmit<br>
+      onFocus onUnload
+    </div>
+  </div>
+
+  <h2>Key Differences to Remember</h2>
+  <table class="tbl">
+    <tr><th>Concept A</th><th>vs</th><th>Concept B</th></tr>
+    <tr><td>Java (complex language)</td><td>≠</td><td>JavaScript (scripting language)</td></tr>
+    <tr><td>HTML (not case sensitive)</td><td>≠</td><td>JavaScript (case sensitive!)</td></tr>
+    <tr><td>== (value only)</td><td>≠</td><td>=== (value + type)</td></tr>
+    <tr><td>Margin (outside border)</td><td>≠</td><td>Padding (inside border)</td></tr>
+    <tr><td>while (may not run)</td><td>≠</td><td>do-while (runs at least once)</td></tr>
+    <tr><td>break (exit loop)</td><td>≠</td><td>continue (skip one iteration)</td></tr>
+    <tr><td>ID selector (#) – unique</td><td>≠</td><td>Class selector (.) – multiple</td></tr>
+    <tr><td>null (no value)</td><td>≠</td><td>0 (a real number)</td></tr>
+    <tr><td>Radio (select ONE)</td><td>≠</td><td>Checkbox (select MANY)</td></tr>
+    <tr><td>Internal linking (same page)</td><td>≠</td><td>External linking (another page)</td></tr>
+  </table>
+</section>
+
+<!-- ════════ LAST MINUTE ════════ -->
+<section id="lastmin">
+  <h1>🚀 Last-Minute Preparation Strategy</h1>
+
+  <div class="callout callout-warn">
+    <span class="callout-icon">🔥</span>
+    <div>Exam is in hours? Read this section first. These are the 20% of topics that will get you 80% of marks!</div>
+  </div>
+
+  <h2>Priority 1 – Do These RIGHT NOW</h2>
+  <div class="card" style="border-left: 4px solid #dc2626;">
+    <h4>🔴 Must Know Cold (No excuses)</h4>
+    <ol>
+      <li>HTML document structure – <code>&lt;!DOCTYPE&gt; &lt;html&gt; &lt;head&gt; &lt;body&gt;</code></li>
+      <li>CSS 3 methods – Inline (style attr), Internal (&lt;style&gt;), External (.css + &lt;link&gt;)</li>
+      <li>CSS 3 selectors – Type (p{}), ID (#id{}), Class (.class{})</li>
+      <li>JS if-else syntax and switch syntax</li>
+      <li>JS for loop, while loop, do-while loop</li>
+      <li>HTML form tags – all input types (text, password, radio, checkbox, submit, reset)</li>
+    </ol>
+  </div>
+
+  <h2>Priority 2 – Then These</h2>
+  <div class="card" style="border-left: 4px solid #f59e0b;">
+    <h4>🟡 Should Know</h4>
+    <ol>
+      <li>CSS Box Model: Margin vs Padding vs Border</li>
+      <li>Table tags: &lt;table&gt; &lt;tr&gt; &lt;th&gt; &lt;td&gt; + colspan rowspan</li>
+      <li>List types: UL, OL, DL and their items</li>
+      <li>JS Variables and Data types (4 types)</li>
+      <li>JS All operators (arithmetic, assignment, comparison, logical)</li>
+      <li>JS Functions: define and call, return statement</li>
+    </ol>
+  </div>
+
+  <h2>Priority 3 – Time Permitting</h2>
+  <div class="card" style="border-left: 4px solid #10b981;">
+    <h4>🟢 Good to Know</h4>
+    <ol>
+      <li>Event handlers: onClick, onMouseOver, onLoad, onChange, onSubmit</li>
+      <li>Arrays: creation, access, length, multidimensional</li>
+      <li>Math object: round(), random(), floor(), PI</li>
+      <li>String methods: length, toUpperCase(), toLowerCase()</li>
+      <li>CSS font properties, text-align, float</li>
+    </ol>
+  </div>
+
+  <h2>⚡ Exam Day Golden Rules</h2>
+  <div class="card">
+    <ol>
+      <li>📝 <strong>Write clean code</strong> – Examiners give marks for proper indentation and structure</li>
+      <li>💬 <strong>Always explain code</strong> – Don't just write code, write 2–3 lines explaining what it does</li>
+      <li>📊 <strong>Draw diagrams</strong> – CSS Box Model diagram gets you extra marks</li>
+      <li>✅ <strong>Show output</strong> – Always mention expected output of your programs</li>
+      <li>🔤 <strong>Use proper syntax</strong> – Check semicolons, brackets, and spelling</li>
+      <li>📋 <strong>Attempt all questions</strong> – Even partial answers get partial marks</li>
+      <li>⏰ <strong>Time management</strong> – 2M ≈ 3 min, 5M ≈ 7 min, 10M ≈ 15 min</li>
+    </ol>
+  </div>
+
+  <h2>🧠 Memory Tricks Summary</h2>
+  <table class="tbl">
+    <tr><th>Topic</th><th>Memory Trick</th></tr>
+    <tr><td>HTML Structure</td><td>DOCTYPE → HTML → HEAD → BODY (top-down like a human body)</td></tr>
+    <tr><td>CSS Box Model order</td><td>C-P-B-M: Content → Padding → Border → Margin</td></tr>
+    <tr><td>CSS Margin shorthand</td><td>TRouBLe: Top Right Bottom Left</td></tr>
+    <tr><td>ID vs Class selector</td><td># = Hash = ID (ID is #unique). . = dot = class (class is common)</td></tr>
+    <tr><td>do-while vs while</td><td>do-while = "Do first, ask later". while = "Ask first, do later"</td></tr>
+    <tr><td>break vs continue</td><td>break = "Fire exit". continue = "Skip to next floor"</td></tr>
+    <tr><td>Radio vs Checkbox</td><td>Radio = One (like a radio station – tune to ONE). Checkbox = Many (check multiple boxes)</td></tr>
+    <tr><td>null vs 0</td><td>null = Empty cup. 0 = A cup with nothing but it exists as a number</td></tr>
+    <tr><td>Array index</td><td>Always starts at 0 – "Zero is the hero in arrays"</td></tr>
+    <tr><td>HREF</td><td>Hyper Reference – the "address" of a link</td></tr>
+  </table>
+
+  <div class="callout callout-tip">
+    <span class="callout-icon">🌟</span>
+    <div><strong>Final Tip:</strong> In the exam, if you forget exact syntax – explain the concept in words first, then attempt the code. You will still get partial marks for showing you understand the concept!</div>
+  </div>
+
+  <h2>Top 20 Expected Questions at a Glance</h2>
+  <div class="card">
+    <ol>
+      <li>Structure of HTML document <span class="badge badge-red">VERY IMP</span></li>
+      <li>Three types of CSS with examples <span class="badge badge-red">VERY IMP</span></li>
+      <li>CSS selectors (Type, ID, Class) <span class="badge badge-red">VERY IMP</span></li>
+      <li>All loops in JS with programs <span class="badge badge-red">VERY IMP</span></li>
+      <li>Conditional statements (if, else, switch) <span class="badge badge-red">VERY IMP</span></li>
+      <li>HTML forms – registration form <span class="badge badge-red">VERY IMP</span></li>
+      <li>All operators in JS <span class="badge badge-yellow">IMPORTANT</span></li>
+      <li>CSS Box Model (margin, padding, border) <span class="badge badge-yellow">IMPORTANT</span></li>
+      <li>Lists in HTML (UL, OL, DL) <span class="badge badge-yellow">IMPORTANT</span></li>
+      <li>HTML Tables with colspan/rowspan <span class="badge badge-yellow">IMPORTANT</span></li>
+      <li>Functions in JS <span class="badge badge-yellow">IMPORTANT</span></li>
+      <li>Events & event handlers <span class="badge badge-yellow">IMPORTANT</span></li>
+      <li>Arrays in JS <span class="badge badge-yellow">IMPORTANT</span></li>
+      <li>Anchor tag & types of linking <span class="badge badge-yellow">IMPORTANT</span></li>
+      <li>CSS advantages and disadvantages <span class="badge badge-yellow">IMPORTANT</span></li>
+      <li>Variables and data types in JS <span class="badge badge-green">GOOD TO KNOW</span></li>
+      <li>Math object methods <span class="badge badge-green">GOOD TO KNOW</span></li>
+      <li>Image tag attributes <span class="badge badge-green">GOOD TO KNOW</span></li>
+      <li>Audio/Video in HTML <span class="badge badge-green">GOOD TO KNOW</span></li>
+      <li>Multidimensional arrays <span class="badge badge-green">GOOD TO KNOW</span></li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<script>
+function show(id) {
+  document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function toggleQ(el) {
+  var body = el.nextElementSibling;
+  body.classList.toggle('open');
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('overview').classList.add('active');
+  document.querySelector('nav a').classList.add('active');
+});
+</script>
+</body>
+</html>
